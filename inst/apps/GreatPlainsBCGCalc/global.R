@@ -24,6 +24,7 @@ library(readr)
 library(rmarkdown)
 library(tools)
 library(openxlsx)
+library(leaflet)
 
 # Source ----
 
@@ -53,6 +54,8 @@ tab_code_filebuilder_taxatrans <- source("external/tab_filebuilder_taxatrans.R"
 tab_code_filebuilder_mergefiles <- source("external/tab_filebuilder_mergefiles.R"
                                          , local = TRUE)$value
 tab_code_calc_bcg              <- source("external/tab_calc_bcg.R"
+                                         , local = TRUE)$value
+tab_code_map                   <- source("external/tab_map.R"
                                          , local = TRUE)$value
 tab_code_resources             <- source("external/tab_resources.R"
                                          , local = TRUE)$value
@@ -129,3 +132,11 @@ httr::GET(url_metricnames, httr::write_disk(temp_metricnames))
 df_metricnames <- readxl::read_excel(temp_metricnames
                                      , sheet = "MetricMetadata"
                                      , skip = 4)
+
+# Map ----
+map_datatypes <- "BCG"
+
+fn_map_meta <- "BCGcalc_Shiny_map_inputs_20230828.xlsx"
+map_meta <- as.data.frame(readxl::read_excel(file.path(path_data, fn_map_meta)
+                                             , sheet = "field_names"
+                                             , skip = 7))

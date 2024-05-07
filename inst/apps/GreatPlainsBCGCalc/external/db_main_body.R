@@ -24,8 +24,8 @@ function(id) {
                 , tab_code_filebuilder_mergefiles())
       , tabItem(tabName = "tab_calc_bcg"
                 , tab_code_calc_bcg())
-      # , tabItem(tabName = "tab_map"
-      #           , tab_code_map())
+      , tabItem(tabName = "tab_map"
+                , tab_code_map())
       , tabItem(tabName = "tab_resources"
                 , tab_code_resources())
     )## tabItems

@@ -1650,4 +1650,802 @@ shinyServer(function(input, output) {
     }##content~END
     #, contentType = "application/zip"
   )##download ~ BCG
+
+  #~~~~MAP~~~~----
+  # MAP ----
+
+  ## Map, UI ----
+
+  output$UI_map_datatype <- renderUI({
+    str_col <- "Select data type (calculation) to map."
+    selectInput("map_datatype"
+                , label = str_col
+                , choices = c("", map_datatypes)
+                , multiple = FALSE)
+  })## UI_datatype
+
+  output$UI_map_col_xlong <- renderUI({
+    str_col <- "Column, Longitude (decimal degrees))"
+    selectInput("map_col_xlong"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "Longitude"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  output$UI_map_col_ylat <- renderUI({
+    str_col <- "Column, Latitude (decimal degrees)"
+    selectInput("map_col_ylat"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "Latitude"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  output$UI_map_col_sampid <- renderUI({
+    str_col <- "Column, SampleID (unique station or sample identifier)"
+    selectInput("map_col_sampid"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "SampleID"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  output$UI_map_col_mapval <- renderUI({
+    str_col <- "Column, Value to Map (e.g., BCG, MTTI, or metric value)"
+    selectInput("map_col_mapval"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "SampleID"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  output$UI_map_col_keep <- renderUI({
+    str_col <- "Additional Columns to Keep in Map Popup"
+    selectInput("map_col_keep"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , multiple = TRUE)
+  })## UI_colnames
+
+  ## Map, Leaflet ----
+  output$map_leaflet <- renderLeaflet({
+
+    # data for plot
+    df_map <- df_import()
+
+    # Map
+    #leaflet() %>%
+    leaflet(data = df_map) %>%
+      # Groups, Base
+      # addTiles(group="OSM (default)") %>%  #default tile too cluttered
+      addProviderTiles("CartoDB.Positron"
+                       , group = "Positron") %>%
+      addProviderTiles(providers$OpenStreetMap
+                       , group = "Open Street Map") %>%
+      addProviderTiles(providers$Esri.WorldImagery
+                       , group = "ESRI World Imagery") %>%
+    # Layers, Control
+    addLayersControl(baseGroups = c("Positron"
+                                    , "Open Street Map"
+                                    , "ESRI World Imagery"
+                                    # , "USGS Imagery"
+    )
+    , overlayGroups = c("Ecoregions, Level III"
+                        # , "BCG Class"
+                        # , "NorWeST"
+                        # , "NHD+ Catchments"
+                        # , "NHD+ Flowlines"
+    )
+    ) %>%
+      # Layers, Hide
+      # hideGroup(c("Ecoregions, Level III"
+      #            # , "BCG Class"
+      #            # , "NorWeST"
+      #            # , "NHD+ Catchments"
+      #            # , "NHD+ Flowlines"
+      # )) %>%
+      # # Mini map
+      addMiniMap(toggleDisplay = TRUE) #%>%
+    # Legend
+    # addLegend("bottomleft"
+    #           , title = "L3 Ecoregions, BCG Valid"
+    #           , colors = c("#000000", "#03F")
+    #           , labels = c("TRUE", "FALSE")
+    #           # , layerID = "Ecoregions, Level III"
+    #           )
+
+
+
+  })## map_leaflet ~ END
+
+  ## Map, Leaflet, Proxy ----
+  # update map based on user selections
+  # tied to Update button
+  # https://rstudio.github.io/leaflet/shiny.html
+  # need a reactive to trigger, use map update button
+  observeEvent(input$but_map_update, {
+
+    ### Data ----
+    df_map <- df_import()
+    names_data <- names(df_map)
+
+    no_narrative <- "No Narrative Designation"
+    size_default <- 50
+
+    ### Map_L_P, Gather and Test Inputs----
+    sel_map_datatype   <- input$map_datatype
+    sel_map_col_xlong  <- input$map_col_xlong
+    sel_map_col_ylat   <- input$map_col_ylat
+    sel_map_col_sampid <- input$map_col_sampid
+    sel_map_col_keep   <- input$map_col_keep
+
+    sel_map_col_mapval <- NA_character_
+    sel_map_col_mapnar <- NA_character_
+    sel_map_col_color  <- NA_character_
+
+    if (is.null(sel_map_datatype) | sel_map_datatype == "") {
+      # end process with pop up
+      msg <- "'Data Type' name is missing!"
+      shinyalert::shinyalert(title = "Update Map"
+                             , text = msg
+                             , type = "error"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+    }## IF ~ sel_map_datatype
+
+    if (is.null(sel_map_col_xlong) | sel_map_col_xlong == "") {
+      # end process with pop up
+      msg <- "'Longitude' column name is missing!"
+      shinyalert::shinyalert(title = "Update Map"
+                             , text = msg
+                             , type = "error"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+    }## IF ~ sel_map_col_xlong
+
+    if (is.null(sel_map_col_ylat) | sel_map_col_ylat == "") {
+      # end process with pop up
+      msg <- "'Latitude' column name is missing!"
+      shinyalert::shinyalert(title = "Update Map"
+                             , text = msg
+                             , type = "error"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+    }## IF ~ sel_map_col_ylat
+
+    if (is.null(sel_map_col_sampid) | sel_map_col_sampid == "") {
+      # end process with pop up
+      msg <- "'SampleID' column name is missing!"
+      shinyalert::shinyalert(title = "Update Map"
+                             , text = msg
+                             , type = "error"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+    }## IF ~ sel_map_col_sampid
+
+    ### Munge Data ----
+    #### Munge, Val, Nar, Size
+    if (sel_map_datatype == "BCG") {
+      sel_map_col_mapval <- "BCG_Status"
+      sel_map_col_mapnar <- "BCG_Status2"
+    } else if (sel_map_datatype == "Fuzzy Temp Model") {
+      sel_map_col_mapval <- "Therm_Class" #"Continuous_Therm"
+      sel_map_col_mapnar <- "Therm_Class"
+    } else if (sel_map_datatype == "MTTI") {
+      sel_map_col_mapval <- "MTTI"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 16, 19, 21, 23, 9999)
+      cut_lab <- c("< 16"
+                   , "16 - 18.9"
+                   , "19 - 20.9"
+                   , "21 - 22.9"
+                   , ">= 23")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+    } else if (sel_map_datatype == "BDI") {
+      sel_map_col_mapval <- "Index"
+      sel_map_col_mapnar <- "Index_Nar"
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold") {
+      sel_map_col_mapval <- "nt_ti_stenocold"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 1, 3, 9999)
+      cut_lab <- c("absent"
+                   , "1 or 2"
+                   , ">= 3")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold_cold") {
+      sel_map_col_mapval <- "nt_ti_stenocold_cold"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 1, 3, 5, 10, 9999)
+      cut_lab <- c("absent"
+                   , "1 or 2"
+                   , "3 or 4"
+                   , "5 - 9"
+                   , ">= 10
+                   ")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold_cold_cool") {
+      sel_map_col_mapval <- "nt_ti_stenocold_cold_cool"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 9, 20, 25, 30, 9999)
+      cut_lab <- c("< 9"
+                   , "9 - 19"
+                   , "20 - 24"
+                   , "25 - 29"
+                   , ">= 30")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+
+    } else if (sel_map_datatype == "Thermal Metrics, pt_ti_stenocold_cold_cool") {
+      sel_map_col_mapval <- "pt_ti_stenocold_cold_cool"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 20, 35, 50, 65, 9999)
+      cut_lab <- c("< 20"
+                   , "20 - 34.9"
+                   , "35 - 49.9"
+                   , "50 - 64.9"
+                   , ">= 65")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+
+    } else if (sel_map_datatype == "Thermal Metrics, pi_ti_stenocold_cold_cool") {
+      sel_map_col_mapval <- "pi_ti_stenocold_cold_cool"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 10, 30, 40, 55, 9999)
+      cut_lab <- c("< 10"
+                   , "10 - 29.9"
+                   , "30 - 39.9"
+                   , "40 - 54.9"
+                   , ">= 55")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+
+    } else if (sel_map_datatype == "Thermal Metrics, pt_ti_warm_stenowarm") {
+      sel_map_col_mapval <- "pt_ti_warm_stenowarm"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 5, 10, 15, 40, 9999)
+      cut_lab <- c("< 5"
+                   , "5 - 9.9"
+                   , "10 - 14.9"
+                   , "15 - 39.9"
+                   , ">= 40")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_warm_stenowarm") {
+      sel_map_col_mapval <- "nt_ti_warm_stenowarm"
+      sel_map_col_mapnar <- "Map_Nar"
+      df_map[, sel_map_col_mapnar] <- NA_character_
+      cut_brk <- c(-1, 2, 9999)
+      cut_lab <- c("NA"
+                   , ">= 2")
+      df_map[, sel_map_col_mapnar] <- cut(df_map[, sel_map_col_mapval]
+                                          , breaks = cut_brk
+                                          , labels = cut_lab
+                                          , include.lowest = TRUE
+                                          , right = FALSE
+                                          , ordered_result = TRUE)
+
+    }## IF ~ sel_datatype ~ END
+
+
+    # QC, Value in data frame
+    boo_map_col_mapval <- sel_map_col_mapval %in% names_data
+    if (boo_map_col_mapval == FALSE) {
+      # end process with pop up
+      msg <- paste0("Map Value column name ("
+                    , sel_map_col_mapval
+                    , ") is missing!")
+      shinyalert::shinyalert(title = "Update Data"
+                             , text = msg
+                             , type = "error"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+    }## IF ~ sel_map_col_sampid
+
+
+
+    # Rename Columns to known values
+    ## Add Jitter to Lat-Long to avoid overlap
+    # 1 second ~ 1/3600 ~ 0.000278 ~ 37.5 meters
+    # 7 seconds ~ 262.3 meters
+    jit_fac <- 0/3600
+    nrow_data <- nrow(df_map)
+    noise_y <- runif(nrow_data, -jit_fac, jit_fac)
+    noise_x <- runif(nrow_data, -jit_fac, jit_fac)
+
+    df_map <- df_map %>%
+      mutate(map_ID = df_map[, sel_map_col_sampid]
+             # , map_ylat = jitter(df_map[, sel_map_col_ylat], jit_fac)
+             # , map_xlong = jitter(df_map[, sel_map_col_xlong], jit_fac)
+             , map_ylat = df_map[, sel_map_col_ylat] + noise_y
+             , map_xlong = df_map[, sel_map_col_xlong] + noise_x
+             , map_mapval = df_map[, sel_map_col_mapval]
+             , map_mapnar = df_map[, sel_map_col_mapnar]
+             , map_color = NA_character_
+             , map_size = NA_real_
+             , map_popup = paste0(as.character("<b>"), "SampleID: ", as.character("</b>"), df_map[, sel_map_col_sampid], as.character("<br>")
+                                  , as.character("<b>"), "Latitude: ", as.character("</b>"), df_map[, sel_map_col_ylat], as.character("<br>")
+                                  , as.character("<b>"), "Longitude: ", as.character("</b>"), df_map[, sel_map_col_xlong], as.character("<br>")
+                                  , as.character("<b>"), "Data Type: ", as.character("</b>"), sel_map_datatype, as.character("<br>")
+                                  , as.character("<b>"), "Value: ", as.character("</b>"), df_map[, sel_map_col_mapval], as.character("<br>")
+                                  , as.character("<b>"), "Narrative: ", as.character("</b>"), df_map[, sel_map_col_mapnar], as.character("<br>")
+             )
+      )
+
+    ### Munge, Color, Size, Legend
+    # by index value or narrative
+    if (sel_map_datatype == "BCG") {
+      leg_title <- "Biological Condition Gradient"
+      # cut_brk <- seq(0.5, 6.5, 1)
+      # cut_lab <- c("blue", "green", "lightgreen", "gray", "orange", "red")
+      # leg_col <- cut_lab
+      # leg_nar <- paste0("L", 1:6)
+      # df_map[, "map_color"] <- cut(df_map[, "map_mapval"]
+      #                              , breaks = cut_brk
+      #                              , labels = cut_lab
+      #                              , include.lowest = TRUE
+      #                              , right = FALSE
+      #                              , ordered_result = TRUE)
+      leg_col <- c("blue"
+                   , "green"
+                   , "darkgreen"
+                   , "lightgreen"
+                   , "yellow"
+                   , "gray"
+                   , "brown"
+                   , "orange"
+                   , "purple"
+                   , "red"
+                   , "#808080"
+      )
+      leg_nar <- c("1"
+                   , "2"
+                   , "2.5"
+                   , "3"
+                   , "3.5"
+                   , "4"
+                   , "4.5"
+                   , "5"
+                   , "5.5"
+                   , "6"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapval == leg_nar[1] ~ leg_col[1]
+                                     , map_mapval == leg_nar[2] ~ leg_col[2]
+                                     , map_mapval == leg_nar[3] ~ leg_col[3]
+                                     , map_mapval == leg_nar[4] ~ leg_col[4]
+                                     , map_mapval == leg_nar[5] ~ leg_col[5]
+                                     , map_mapval == leg_nar[6] ~ leg_col[6]
+                                     , map_mapval == leg_nar[7] ~ leg_col[7]
+                                     , map_mapval == leg_nar[8] ~ leg_col[8]
+                                     , map_mapval == leg_nar[9] ~ leg_col[9]
+                                     , map_mapval == leg_nar[10] ~ leg_col[10]
+                                     , TRUE ~ leg_col[11]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- size_default
+    } else if (sel_map_datatype == "Fuzzy Temp Model") {
+      leg_title <- "Fuzzy Temp Model"
+      ## v1
+      # leg_col <- c("#00B0F0"
+      #              , "#8EA9DB"
+      #              , "#8EA9DB"
+      #              , "#8EA9DB"
+      #              , "#B4C6E7"
+      #              , "#BDD7EE"
+      #              , "#BDD7EE"
+      #              , "#BDD7EE"
+      #              , "#DDEBF7"
+      #              , "#F2F2F2"
+      #              , "#F2F2F2"
+      #              , "#F2F2F2"
+      #              , "#F8CBAD"
+      #              , "#808080"
+      # )
+      ## v2
+      # leg_col <- c(blues9[9]
+      #              , blues9[8]
+      #              , blues9[8]
+      #              , blues9[8]
+      #              , blues9[7]
+      #              , blues9[6]
+      #              , blues9[6]
+      #              , blues9[6]
+      #              , blues9[5]
+      #              , blues9[4]
+      #              , blues9[4]
+      #              , blues9[4]
+      #              , "#F8CBAD"
+      #              , "#808080"
+      # )
+      ## v3
+      leg_col <- c("#140AE6"
+                   , "#0066FF"
+                   , "#7B9BF5"
+                   , "#7B9BF5"
+                   , "#0AE1EC"
+                   , "#9AF3FC"
+                   , "#BEFEFB"
+                   , "#DDFBFF"
+                   , "#DDFBFF"
+                   , "#C6FFB9"
+                   , "#34FB25"
+                   , "#FFFF66"
+                   , "#FFFFE5"
+                   , "#FFFFE5"
+                   , "#E4DFEC"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c("VeryCold"
+                   , "VCold_Cold"
+                   , "TIE_VCold_Cold"
+                   , "TIE_Cold_VCold"
+                   , "Cold_VCold"
+                   , "Cold"
+                   , "Cold_Cool"
+                   , "TIE_Cold_Cool"
+                   , "TIE_Cool_Cold"
+                   , "Cool_Cold"
+                   , "Cool"
+                   , "Cool_Warm"
+                   , "TIE_Cool_Warm"
+                   , "TIE_Warm_Cool"
+                   , "Warm_Cool"
+                   , "Warm"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , map_mapnar == leg_nar[6] ~ leg_col[6]
+                                     , map_mapnar == leg_nar[7] ~ leg_col[7]
+                                     , map_mapnar == leg_nar[8] ~ leg_col[8]
+                                     , map_mapnar == leg_nar[9] ~ leg_col[9]
+                                     , map_mapnar == leg_nar[10] ~ leg_col[10]
+                                     , map_mapnar == leg_nar[11] ~ leg_col[11]
+                                     , map_mapnar == leg_nar[12] ~ leg_col[12]
+                                     , map_mapnar == leg_nar[13] ~ leg_col[13]
+                                     , TRUE ~ leg_col[14]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- size_default
+    } else if (sel_map_datatype == "MTTI") {
+      leg_title <- "MTTI"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c("< 16"
+                   , "16 - 18.9"
+                   , "19 - 20.9"
+                   , "21 - 22.9"
+                   , ">= 23"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , TRUE ~ leg_col[6]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "BDI") {
+      leg_title <- "BioDiversity Index"
+      cut_brk <- c(0, 20, 30, 999)
+      cut_lab <- c("gray", "lightgreen", "blue")
+      leg_col <- rev(cut_lab)
+      leg_nar <- rev(c("Low", "Medium", "High"))
+      df_map[, "map_color"] <- cut(df_map[, "map_mapval"]
+                                   , breaks = cut_brk
+                                   , labels = cut_lab
+                                   , include.lowest = TRUE
+                                   , right = FALSE
+                                   , ordered_result = TRUE)
+      df_map[, "map_size"] <- size_default
+      # REVERSE ORDER FOR LEGEND
+
+
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold") {
+      leg_title <- "cold stenotherm taxa"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 3"
+                   , "1 or 2"
+                   , "absent"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , TRUE ~ leg_col[3]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold_cold") {
+      leg_title <- "cold stenotherm + cold taxa"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 10"
+                   , "5 - 9"
+                   , "3 or 4"
+                   , "1 or 2"
+                   , "absent"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar %in% leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , TRUE ~ leg_col[5]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_stenocold_cold_cool") {
+      leg_title <- "# cold stenotherm + cold + cool taxa"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 30"
+                   , "25 - 29"
+                   , "20 - 24"
+                   , "9 - 19"
+                   , "< 9"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , TRUE ~ leg_col[6]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, pt_ti_stenocold_cold_cool") {
+      leg_title <- "% cold stenotherm + cold + cool taxa"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 65"
+                   , "50 - 64.9"
+                   , "35 - 49.9"
+                   , "20 - 34.9"
+                   , "< 20"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , TRUE ~ leg_col[6]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, pi_ti_stenocold_cold_cool") {
+      leg_title <- "% cold stenotherm + cold + cool indiv"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 55"
+                   , "40 - 54.9"
+                   , "30 - 39.9"
+                   , "10 - 29.9"
+                   , "< 10"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , TRUE ~ leg_col[6]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, pt_ti_warm_stenowarm") {
+      leg_title <- "% warm + warm stenotherm taxa"
+      leg_col <- c("#00B0F0"
+                   , "#9AF3FC"
+                   , "#92D050"
+                   , "#FFFF00"
+                   , "#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c("< 5"
+                   , "5 - 9.9"
+                   , "10 - 14.9"
+                   , "15 - 39.9"
+                   , ">= 40"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , map_mapnar == leg_nar[2] ~ leg_col[2]
+                                     , map_mapnar == leg_nar[3] ~ leg_col[3]
+                                     , map_mapnar == leg_nar[4] ~ leg_col[4]
+                                     , map_mapnar == leg_nar[5] ~ leg_col[5]
+                                     , TRUE ~ leg_col[6]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else if (sel_map_datatype == "Thermal Metrics, nt_ti_warm_stenowarm") {
+      leg_title <- "warm stenotherm taxa"
+      leg_col <- c("#FFC000"
+                   , "#808080"
+      )
+      leg_nar <- c(">= 2"
+                   , "NA"
+      )
+      df_map <- df_map %>%
+        mutate(map_color = case_when(map_mapnar == leg_nar[1] ~ leg_col[1]
+                                     , TRUE ~ leg_col[2]
+        ))
+      # TRUE is ELSE and #808080 is gray
+      df_map[, "map_size"] <- df_map$map_mapval
+    } else {
+      leg_title <- NA
+      df_map[, "map_color"] <- "gray"
+      df_map[, "map_size"] <- size_default
+      leg_col <- "gray"
+      leg_nar <- no_narrative
+    }## IF ~ sel_datatype ~ COLOR
+
+
+
+    ### Map ----
+    # Bounding box
+    map_bbox <- c(min(df_map[, sel_map_col_xlong], na.rm = TRUE)
+                  , min(df_map[, sel_map_col_ylat], na.rm = TRUE)
+                  , max(df_map[, sel_map_col_xlong], na.rm = TRUE)
+                  , max(df_map[, sel_map_col_ylat], na.rm = TRUE)
+    )
+
+    #~~~~~~~~~~~~~~~~~~~~~~
+    # repeat code from base
+    #~~~~~~~~~~~~~~~~~~~~~~
+    # zoom levels, https://leafletjs.com/examples/zoom-levels/
+
+    #leaflet() %>%
+    leafletProxy("map_leaflet", data = df_map) %>%
+      # Groups, Base
+      # addProviderTiles("CartoDB.Positron"
+      #                  , group = "Positron") %>%
+      # addProviderTiles(providers$Stamen.TonerLite
+      #                  , group = "Toner Lite") %>%
+      # addProviderTiles(providers$OpenStreetMap
+      #                  , group = "Open Street Map") %>%
+      clearControls() %>%
+      clearShapes() %>%
+      clearMarkers() %>%
+      # Groups, Overlay
+      # addCircles(lng = ~map_xlong
+      #            , lat = ~map_ylat
+      #            , color = ~map_color
+      #            , popup = ~map_popup
+      #            , radius = ~map_size
+      #            , group = "Samples") %>%
+      addCircleMarkers(lng = ~map_xlong
+                       , lat = ~map_ylat
+                       , color = ~map_color
+                       , popup = ~map_popup
+                       #, radius = ~map_size
+                       , fill = ~map_color
+                       , stroke = TRUE
+                       , fillOpacity = 0.75
+                       , group = "Samples"
+                       , clusterOptions = markerClusterOptions(spiderfyDistanceMultiplier=1.5
+                                                               , showCoverageOnHover = TRUE
+                                                               , freezeAtZoom = 13)
+      ) %>%
+      # Test different points
+      # addAwesomeMarkers(lng = ~map_xlong
+      #                   , lat = ~map_ylat
+      #                   , popup = ~map_popup
+      #                   , clusterOptions = markerClusterOptions()) %>%
+      # Legend
+      addLegend("bottomleft"
+                , colors = leg_col
+                , labels = leg_nar
+                , values = NA
+                , title = leg_title) %>%
+      # Layers, Control
+      addLayersControl(baseGroups = c("Positron"
+                                      , "Open Street Map"
+                                      , "ESRI World Imagery")
+                       , overlayGroups = c("Samples"
+                                           , "Ecoregions, Level III"
+                                           #, "BCG Class"
+                                           # , "NorWeST"
+                                           # , "NHD+ Catchments"
+                                           # , "NHD+ Flowlines"
+                       )
+      ) %>%
+      # Layers, Hide
+      hideGroup(c("Ecoregions, Level III"
+                  # , "BCG Class"
+                  # , "NorWeST"
+                  # , "NHD+ Catchments"
+                  # , "NHD+ Flowlines"
+      )) %>%
+      # Bounds
+      fitBounds(map_bbox[1], map_bbox[2], map_bbox[3], map_bbox[4])
+
+
+  })## MAP, Leaflet, PROXY
 })##shinyServer ~ END

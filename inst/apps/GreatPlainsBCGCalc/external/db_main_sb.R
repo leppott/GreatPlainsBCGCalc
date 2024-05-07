@@ -45,6 +45,9 @@ function(id) {
                                , tabName = "tab_calc_bcg"
                                , icon = icon("award"))
                  )## menuItem ~ BCG
+      , menuItem(text = "Map"
+                 , tabName = "tab_map"
+                 , icon = icon("map"))## menuItem ~ Map
       , menuItem(text = "Relevant Resources"
                  , tabName = "tab_resources"
                  , icon = icon("book"))
