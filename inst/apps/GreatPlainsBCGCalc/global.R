@@ -50,6 +50,8 @@ tab_code_filebuilder_outsideapp           <- source("external/tab_filebuilder_ou
                                          , local = TRUE)$value
 tab_code_filebuilder_taxatrans <- source("external/tab_filebuilder_taxatrans.R"
                                          , local = TRUE)$value
+tab_code_filebuilder_mergefiles <- source("external/tab_filebuilder_mergefiles.R"
+                                         , local = TRUE)$value
 tab_code_calc_bcg              <- source("external/tab_calc_bcg.R"
                                          , local = TRUE)$value
 tab_code_resources             <- source("external/tab_resources.R"
@@ -77,6 +79,7 @@ if (dir.exists(path_results) == FALSE) {
 # File and Folder Names ----
 abr_filebuilder <- "FB"
 abr_taxatrans   <- "TaxaTranslator"
+abr_mergefiles  <- "MergeFiles"
 abr_results     <- "results"
 abr_bcg         <- "BCG"
 dn_files_ref    <- "reference"

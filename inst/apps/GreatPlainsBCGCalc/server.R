@@ -704,6 +704,462 @@ shinyServer(function(input, output) {
     #, contentType = "application/zip"
   )##download ~ TaxaTrans
 
+  # FB, MERGE FILES ----
+
+  ## Merge, Import ----
+  ### Merge, Import, FileWatch ----
+  file_watch_mf1 <- reactive({
+    # trigger for df_import()
+    input$fn_input_mf1
+  })## file_watch
+
+  file_watch_mf2 <- reactive({
+    # trigger for df_import()
+    input$fn_input_mf2
+  })## file_watch
+
+  ### Merge, Import, df_import_mf1 ----
+  df_import_mf1 <- eventReactive(file_watch_mf1(), {
+    # use a multi-item reactive so keep on a single line (if needed later)
+
+    # input$df_import_mf1 will be NULL initially. After the user selects
+    # and uploads a file, it will be a data frame with 'name',
+    # 'size', 'type', and 'datapath' columns. The 'datapath'
+    # column will contain the local filenames where the data can
+    # be found.
+
+    inFile <- input$fn_input_mf1
+
+    if (is.null(inFile)) {
+      return(NULL)
+    }##IF~is.null~END
+
+    sep_user <- input$sep
+
+    # Define file
+    fn_inFile <- inFile$datapath
+
+    #message(getwd())
+    # message(paste0("Import, separator: '", input$sep,"'"))
+    message(paste0("Import, file name: ", inFile$name))
+
+    # Remove existing files in "results"
+    clean_results()
+
+    #### Mod, BCG_ATTR----
+    # Read user imported file
+    # Add extra colClasses parameter for BCG_Attr
+    # the "i" values default to complex numbers
+    # many permutations of BCG_Attr so check for it first then import
+    df_header <- read.delim(fn_inFile
+                            , header = TRUE
+                            , sep = sep_user
+                            , stringsAsFactors = FALSE
+                            , na.strings = c("", "NA")
+                            , nrows = 0)
+    col_num_bcgattr <- grep("BCG_ATTR", toupper(names(df_header)))
+    classes_df <- sapply(df_header, class)
+    col_name_bcgattr <- names(df_header)[col_num_bcgattr]
+
+    if (identical(col_num_bcgattr, integer(0))) {
+      # BCG_Attr present = FALSE
+      # define classes = FALSE
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA"))
+    } else if (as.vector(classes_df[col_num_bcgattr]) != "complex") {
+      # BCG_Attr present = TRUE
+      # BCG_Attr Class is complex = FALSE
+      # define classes on import = FALSE (change to text after import)
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA"))
+      df_input[, col_num_bcgattr] <- as.character(df_input[, col_num_bcgattr])
+    } else {
+      # BCG_Attr present = TRUE
+      # define classes = TRUE
+      classes_df <- sapply(df_header, class)
+      classes_df[col_num_bcgattr] <- "character"
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA")
+                             #, colClasses = classes_df)
+                             #, colClasses = c(col_name_bcgattr = "character"))
+                             , colClasses = classes_df[col_name_bcgattr])
+
+    }## IF ~ col_num_bcgattr == integer(0)
+
+    # result folder and files
+    path_results_sub <- file.path(path_results, dn_files_input)
+    # Add "Results" folder if missing
+    boo_Results <- dir.exists(file.path(path_results_sub))
+    if (boo_Results == FALSE) {
+      dir.create(file.path(path_results_sub))
+    }
+
+    # Copy to "Results" sub-folder - Import "as is"
+    file.copy(inFile$datapath
+              , file.path(path_results_sub, inFile$name))
+
+    # button, enable, calc
+    shinyjs::enable("b_calc_mergefiles")
+
+    # activate tab Panel with table of imported data
+    updateTabsetPanel(session = getDefaultReactiveDomain()
+                      , "MF_mp_tsp"
+                      , selected = "tab_MF_1")
+
+    # Return Value
+    return(df_input)
+
+  })##output$df_import_mf1 ~ END
+
+
+  ### Merge, Import, df_import_mf2----
+  df_import_mf2 <- eventReactive(file_watch_mf2(), {
+    # use a multi-item reactive so keep on a single line (if needed later)
+
+    # input$df_import_mf1 will be NULL initially. After the user selects
+    # and uploads a file, it will be a data frame with 'name',
+    # 'size', 'type', and 'datapath' columns. The 'datapath'
+    # column will contain the local filenames where the data can
+    # be found.
+
+    inFile <- input$fn_input_mf2
+
+    if (is.null(inFile)) {
+      return(NULL)
+    }##IF~is.null~END
+
+    # Define file
+    fn_inFile <- inFile$datapath
+
+    sep_user <- input$sep
+
+    #message(getwd())
+    #message(paste0("Import, separator: '", input$sep,"'"))
+    message(paste0("Import, file name: ", inFile$name))
+
+    # Move Results folder clean up to calc button
+    # Assume import 2nd file after 1st
+
+    #### Mod, BCG_ATTR----
+    # Read user imported file
+    # Add extra colClasses parameter for BCG_Attr
+    # the "i" values default to complex numbers
+    # many permutations of BCG_Attr so check for it first then import
+    df_header <- read.delim(fn_inFile
+                            , header = TRUE
+                            , sep = sep_user
+                            , stringsAsFactors = FALSE
+                            , na.strings = c("", "NA")
+                            , nrows = 0)
+    col_num_bcgattr <- grep("BCG_ATTR", toupper(names(df_header)))
+    classes_df <- sapply(df_header, class)
+    col_name_bcgattr <- names(df_header)[col_num_bcgattr]
+
+    if (identical(col_num_bcgattr, integer(0))) {
+      # BCG_Attr present = FALSE
+      # define classes = FALSE
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA"))
+    } else if (as.vector(classes_df[col_num_bcgattr]) != "complex") {
+      # BCG_Attr present = TRUE
+      # BCG_Attr Class is complex = FALSE
+      # define classes on import = FALSE (change to text after import)
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA"))
+      df_input[, col_num_bcgattr] <- as.character(df_input[, col_num_bcgattr])
+    } else {
+      # BCG_Attr present = TRUE
+      # define classes = TRUE
+      classes_df <- sapply(df_header, class)
+      classes_df[col_num_bcgattr] <- "character"
+      df_input <- read.delim(fn_inFile
+                             , header = TRUE
+                             , sep = sep_user
+                             , stringsAsFactors = FALSE
+                             , na.strings = c("", "NA")
+                             # , colClasses = classes_df)
+                             #, colClasses = c(col_name_bcgattr = "character"))
+                             , colClasses = classes_df[col_name_bcgattr])
+
+    }## IF ~ col_num_bcgattr == integer(0)
+
+    # result folder and files
+    path_results_sub <- file.path(path_results, dn_files_input)
+    # Add "Results" folder if missing
+    boo_Results <- dir.exists(file.path(path_results_sub))
+    if (boo_Results == FALSE) {
+      dir.create(file.path(path_results_sub))
+    }
+
+    # Copy to "Results" sub-folder - Import "as is"
+    file.copy(inFile$datapath
+              , file.path(path_results_sub, inFile$name))
+
+    # button, enable, calc
+    shinyjs::enable("b_calc_mergefiles")
+
+    # activate tab Panel with table of imported data
+    updateTabsetPanel(session = getDefaultReactiveDomain()
+                      , "MF_mp_tsp"
+                      , selected = "tab_MF_2")
+
+    # Return Value
+    return(df_input)
+
+  })##output$df_import_mf2 ~ END
+
+  ### Merge, Import, df_import_mf1_DT ----
+  output$df_import_mf1_DT <- DT::renderDT({
+    df_data <- df_import_mf1()
+  }##expression~END
+  , filter = "top"
+  , caption = "Table. MergeFile 1 (Samples)."
+  , options = list(scrollX = TRUE
+                   , pageLength = 5
+                   , lengthMenu = c(5, 10, 25, 50, 100, 1000)
+                   , autoWidth = TRUE)
+  )##df_import_mf1_DT ~ END
+
+  ### Merge, Import, df_import_mf2_DT ----
+  output$df_import_mf2_DT <- DT::renderDT({
+    df_data <- df_import_mf2()
+  }##expression~END
+  , filter = "top"
+  , caption = "Table. MergeFile 2 (Sites)."
+  , options = list(scrollX = TRUE
+                   , pageLength = 5
+                   , lengthMenu = c(5, 10, 25, 50, 100, 1000)
+                   , autoWidth = TRUE)
+  )##df_import_mf1_DT ~ END
+
+  ## Merge, UI----
+
+  output$UI_mergefiles_f1_col_merge <- renderUI({
+    str_col <- "Merge Identifier, Primary File, Column Name"
+    selectInput("mergefiles_f1_col_merge"
+                , label = str_col
+                # , choices = c("SiteID", "feature", "in progress")
+                , choices = c("", names(df_import_mf1()))
+                , selected = "SiteID"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  output$UI_mergefiles_f2_col_merge <- renderUI({
+    str_col <- "Merge Identifier, Secondary File, Column Name"
+    selectInput("mergefiles_f2_col_merge"
+                , label = str_col
+                #, choices = c("SiteID", "feature", "in progress")
+                , choices = c("", names(df_import_mf2()))
+                , selected = "SiteID"
+                , multiple = FALSE)
+  })## UI_colnames
+
+  ## b_Calc_MergeFiles ----
+  observeEvent(input$b_calc_mergefiles, {
+    shiny::withProgress({
+
+      # time, start
+      tic <- Sys.time()
+
+      ### Calc, 00, Set Up Shiny Code ----
+
+      prog_detail <- "Calculation, Merge Files..."
+      message(paste0("\n", prog_detail))
+
+      # Number of increments
+      prog_n <- 6
+      prog_sleep <- 0.25
+
+      ## Calc, 01, Initialize ----
+      prog_detail <- "Initialize Data"
+      message(paste0("\n", prog_detail))
+      # Increment the progress bar, and update the detail text.
+      incProgress(1/prog_n, detail = prog_detail)
+      Sys.sleep(prog_sleep)
+
+      # Remove existing files in "results"
+      clean_results()
+
+      # Copy user files to results sub-folder
+      copy_import_file(import_file = input$fn_input_mf1)
+      copy_import_file(import_file = input$fn_input_mf2)
+
+      # result folder and files
+      fn_abr <- abr_mergefiles
+      fn_abr_save <- paste0("_", fn_abr, "_")
+      path_results_sub <- file.path(path_results
+                                    , paste(abr_results, fn_abr, sep = "_"))
+      # Add "Results" folder if missing
+      boo_Results <- dir.exists(file.path(path_results_sub))
+      if (boo_Results == FALSE) {
+        dir.create(file.path(path_results_sub))
+      }
+
+      # button, disable, download
+      shinyjs::disable("b_download_mergefiles")
+
+      ## Calc, 02, Gather and Test Inputs  ----
+      prog_detail <- "QC Inputs"
+      message(paste0("\n", prog_detail))
+      # Increment the progress bar, and update the detail text.
+      incProgress(1/prog_n, detail = prog_detail)
+      Sys.sleep(prog_sleep)
+
+      # inputs
+      ## file names
+      fn_mf1 <- input$fn_input_mf1$name
+      fn_mf2 <- input$fn_input_mf2$name
+      ## column names
+      col_siteid_mf1 <- input$mergefiles_f1_col_merge
+      col_siteid_mf2 <- input$mergefiles_f2_col_merge
+      ## file name base (file 1)
+      fn_input_base <- tools::file_path_sans_ext(fn_mf1)
+
+      # Stop if don't have both MF1 and MF2
+      if (is.null(fn_mf1)) {
+        msg <- "Merge File 1 filename is missing!"
+        shinyalert::shinyalert(title = "Merge File Calculation Error"
+                               , text = msg
+                               , type = "error"
+                               , closeOnEsc = TRUE
+                               , closeOnClickOutside = TRUE)
+        validate(msg)
+      }## IF ~ is.null (mf1)
+
+      if (is.null(fn_mf2)) {
+        msg <- "Merge File 2 filename is missing!"
+        shinyalert::shinyalert(title = "Merge File Calculation Error"
+                               , text = msg
+                               , type = "error"
+                               , closeOnEsc = TRUE
+                               , closeOnClickOutside = TRUE)
+        validate(msg)
+      }## IF ~ is.null (mf1)
+
+      # Stop if colname for merge is NA
+      if (col_siteid_mf1 == "") {
+        msg <- "Merge File 1 merge column is missing!"
+        shinyalert::shinyalert(title = "Merge File Calculation Error"
+                               , text = msg
+                               , type = "error"
+                               , closeOnEsc = TRUE
+                               , closeOnClickOutside = TRUE)
+        validate(msg)
+      }## IF ~ is.null (mf1)
+
+      if (col_siteid_mf2 == "") {
+        msg <- "Merge File 2 merge column is missing!"
+        shinyalert::shinyalert(title = "Merge File Calculation Error"
+                               , text = msg
+                               , type = "error"
+                               , closeOnEsc = TRUE
+                               , closeOnClickOutside = TRUE)
+        validate(msg)
+      }## IF ~ is.null (mf1)
+
+      ## Calc, 03, Run Function----
+      suff_1x <- ".x"
+      suff_2y <- ".y"
+      df_merge <- merge(df_import_mf1()
+                        , df_import_mf2()
+                        , by.x = col_siteid_mf1
+                        , by.y = col_siteid_mf2
+                        , suffixes = c(suff_1x, suff_2y)
+                        , all.x = TRUE
+                        , sort = FALSE
+      )
+      # ***REPEAT*** same merge statement in DT statement for display on tab
+
+      # move MF2 columns to the start (at end after merge)
+      ## use index numbers
+      ncol_1x <- ncol(df_import_mf1())
+      ncol_merge <- ncol(df_merge)
+      df_merge <- df_merge[, c(1, seq(ncol_1x + 1, ncol_merge), 2:ncol_1x)]
+
+      ## Calc, 04, Save Results ----
+
+      fn_merge <- paste0(fn_input_base, fn_abr_save, "RESULTS.csv")
+      pn_merge <- file.path(path_results_sub, fn_merge)
+      write.csv(df_merge, pn_merge, row.names = FALSE)
+
+
+      ## Calc, 05, Clean Up----
+      prog_detail <- "Calculate, Clean Up"
+      message(paste0("\n", prog_detail))
+      # Increment the progress bar, and update the detail text.
+      incProgress(1/prog_n, detail = prog_detail)
+      Sys.sleep(2 * prog_sleep)
+
+      # # activate tab Panel with table of imported data
+      # updateTabsetPanel(session = getDefaultReactiveDomain()
+      #                   , "MF_mp_tsp"
+      #                   , selected = "tab_MF_merge")
+
+
+      ## Calc, 06, Zip Results ----
+      fn_4zip <- list.files(path = path_results
+                            , full.names = TRUE)
+      zip::zip(file.path(path_results, "results.zip"), fn_4zip)
+
+      # button, enable, download
+      shinyjs::enable("b_download_mergefiles")
+
+      # time, end
+      toc <- Sys.time()
+      duration <- difftime(toc, tic)
+
+      # pop up
+      msg <- paste0("Elapse Time (", units(duration), ") = ", round(duration, 2))
+      shinyalert::shinyalert(title = "Task Compete"
+                             , text = msg
+                             , type = "success"
+                             , closeOnEsc = TRUE
+                             , closeOnClickOutside = TRUE)
+      # validate(msg)
+
+    }## expr ~ withProgress ~ END
+    , message = "Merging Files"
+    )## withProgress ~ END
+  }##expr ~ ObserveEvent ~ END
+  )##observeEvent ~ b_calc_met_therm ~ END
+
+
+  ## b_download_mergefiles ----
+  output$b_download_mergefiles <- downloadHandler(
+
+    filename = function() {
+      inFile <- input$fn_input_mf2
+      fn_input_base <- tools::file_path_sans_ext(inFile$name)
+      fn_abr <- abr_mergefiles
+      fn_abr_save <- paste0("_", fn_abr, "_")
+      paste0(fn_input_base
+             , fn_abr_save
+             , format(Sys.time(), "%Y%m%d_%H%M%S")
+             , ".zip")
+    } ,
+    content = function(fname) {
+
+      file.copy(file.path(path_results, "results.zip"), fname)
+
+    }##content~END
+    #, contentType = "application/zip"
+  )##download ~ MergeFiles
+
   #~~~~CALC~~~~----
 
   # Calc, BCG ----

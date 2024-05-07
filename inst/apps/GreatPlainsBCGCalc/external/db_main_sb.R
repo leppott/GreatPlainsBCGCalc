@@ -33,6 +33,10 @@ function(id) {
                                , tabName = "tab_filebuilder_outsideapp"
                                , icon = icon("language")
                                )
+                 , menuSubItem("Merge Files"
+                               , tabName = "tab_filebuilder_mergefiles"
+                               , icon = icon("code-merge")
+                               )
                  )## menuItem ~ File Builder
       , menuItem(text = "Calculation"
                  , icon = icon("gears")
