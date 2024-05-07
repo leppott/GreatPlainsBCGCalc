@@ -8,11 +8,11 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 dashboardPage(
-  header = dashboardHeader(title = "BCGcalc -- NM Sandy Rivers", titleWidth = 300)
+  header = dashboardHeader(title = "BCGcalc - Great Plains", titleWidth = 300)
   , sidebar = dashboardSidebar(db_main_sb("leftsidebarmenu"))
   , body = dashboardBody(db_main_body("dbBody"))
   , footer = dashboardFooter(left = pkg_version
-                             , right = "https://github.com/Blocktt/NM_BCGCalc")
+                             , right = "https://github.com/Blocktt/GreatPlainsBCGCalc")
 ) ## dashboardPage ~ END
 
 # https://rstudio.github.io/shinydashboard/get_started.html

@@ -1,7 +1,7 @@
 # Shiny Global File
 
 # Version ----
-pkg_version <- "0.0.1.9002"
+pkg_version <- "0.0.1.9000"
 
 # Packages----
 library(BCGcalc)
@@ -86,7 +86,8 @@ dn_files_input  <- "_user_input"
 sel_community <- c("bugs", "fish")
 
 ##  BCG Models ----
-url_bcg_base <- "https://github.com/leppott/BCGcalc/raw/main/inst/extdata"
+# url_bcg_base <- "https://github.com/leppott/BCGcalc/raw/main/inst/extdata"
+url_bcg_base <- "https://github.com/Blocktt/BCGcalc/raw/main/inst/extdata"
 
 url_bcg_models <- file.path(url_bcg_base, "Rules.xlsx")
 temp_bcg_models <- tempfile(fileext = ".xlsx")
@@ -95,7 +96,7 @@ httr::GET(url_bcg_models, httr::write_disk(temp_bcg_models))
 df_bcg_models <- as.data.frame(readxl::read_excel(temp_bcg_models
                                                   , guess_max = 10^3
                                                   , sheet = "Rules"))
-sel_bcg_models <- "BCG_NMSandyRivers"
+sel_bcg_models <- "BCG_GreatPlains"
 
 ## URL BioMonTools
 url_bmt_base <- "https://github.com/leppott/BioMonTools_SupportFiles/raw/main/data"
@@ -110,7 +111,7 @@ df_checks <- as.data.frame(readxl::read_excel(temp_bcg_checks, sheet = "Flags"))
 # BMT, Taxa Official Pick----
 url_taxa_official_pick <- file.path(url_bmt_base
                                     , "taxa_official"
-                                    , "NM_BCG_Pick_Files.csv")
+                                    , "GreatPlains_BCG_Pick_Files.csv")
 temp_taxa_official_pick <- tempfile(fileext = ".csv")
 httr::GET(url_taxa_official_pick, httr::write_disk(temp_taxa_official_pick))
 

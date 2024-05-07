@@ -1,6 +1,6 @@
 ---
 title: "Prepare Data, Outside app"
-date: "2024-01-12"
+date: "2024-05-06"
 output: html_fragment
 editor_options: 
   markdown: 
@@ -33,14 +33,16 @@ IMPORTANT: Make sure you are using the proper Operational Taxonomic Unit
 (OTU) and taxa traits/attributes for your metric calculations. The Taxa
 Translator and Attribute tables (and associated metadata) that were used
 for BCG development can be downloaded
-<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official" target = "_blank">here</a>
-. Note, that traits are not required for each record (i.e., trait fields
-allow null values).
+<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official" target = "_blank">(Taxa
+Translator Files)</a> (look for "GreatPlains_BCG\_\*" files). Note, that
+traits are not required for each record (i.e., trait fields allow null
+values).
 
-Click here to download a test file for
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/NM_BCGCalc/Example_Files/NM_BCG_Bugs_BCGCalcInput_20240111.csv" target="_blank">bugs</a>
-or
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/NM_BCGCalc/Example_Files/NM_BCG_Fish_BCGCalcInput_20240111.csv" target="_blank">fish</a>.
+Click here to download a
+<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">bugs
+test file</a> or
+<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">fish
+test file</a>.
 
 ## Input file requirements for bugs
 

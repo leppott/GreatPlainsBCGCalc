@@ -377,9 +377,9 @@ shinyServer(function(input, output) {
 
       # Different result subfolder based on project (bugs/fish)
       # 2024-01-12
-      if (sel_proj == "NM BCG (Bugs)") {
+      if (sel_proj == "Bugs BCG") {
         dir_proj_results <- paste("bugs", dir_proj_results, sep = "_")
-      } else if (sel_proj == "NM BCG (Fish)") {
+      } else if (sel_proj == "Fish BCG") {
         dir_proj_results <- paste("fish", dir_proj_results, sep = "_")
       }## IF ~ sel_proj
 
@@ -776,18 +776,14 @@ shinyServer(function(input, output) {
       # QC, names to upper case
       names(df_input) <- toupper(names(df_input))
 
-      # QC, Index_Name & Index_Class
+      # QC, Index_Name
       my_comm <- input$si_community
       if ((!"INDEX_NAME" %in% toupper(names(df_input)))
           & (my_comm == "bugs")) {
-        df_input[, "INDEX_NAME"] <- "NM_Bugs_BCG"
+        df_input[, "INDEX_NAME"] <- "GP_BCG_Bugs"
       } else if((!"INDEX_NAME" %in% toupper(names(df_input)))
                 & (my_comm == "fish")){
-        df_input[, "INDEX_NAME"] <- "NM_Fish_BCG"
-      }## IF ~ INDEX_NAME
-
-      if (!"INDEX_CLASS" %in% toupper(names(df_input))) {
-        df_input[, "INDEX_CLASS"] <- "SandyBottomRivers"
+        df_input[, "INDEX_NAME"] <- "GP_BCG_Fish"
       }## IF ~ INDEX_NAME
 
       ## Calc, 2, Exclude Taxa ----
@@ -895,11 +891,13 @@ shinyServer(function(input, output) {
       incProgress(1/prog_n, detail = prog_detail)
       Sys.sleep(prog_sleep)
 
-      # Calc
-      # QC
-      # df_input <- read.csv(file.path("inst", "extdata", "Data_BCG_PacNW.csv"))
-      # df_metval <- BioMonTools::metric.values(df_input, "bugs", boo.Shiny = TRUE)
+      #QC, BCG_Num to TOLVAL2 field
+      if("BCG_NUM" %in% toupper(names(df_input))){
+        df_input[, "TOLVAL2"] <- df_input$BCG_NUM
 
+      } #END ~ if
+
+      # Metric calculation
       if (length(cols_flags_keep) > 0) {
         # keep extra cols from Flags (non-metric)
         df_metval <- BioMonTools::metric.values(df_input
@@ -916,7 +914,6 @@ shinyServer(function(input, output) {
                                                 , taxaid_dni = "DNI")
       }## IF ~ length(col_rules_keep)
 
-      #df_metval$INDEX_CLASS <- df_metval$INDEX_CLASS
 
       ### Save Results ----
 

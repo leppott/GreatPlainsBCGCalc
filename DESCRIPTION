@@ -1,11 +1,11 @@
-Package: NM_BCGCalc
+Package: GreatPlainsBCGCalc
 Type: Package
-Title: New Mexico Macroinvertebrate and Fish BCGs Calculator
-Version: 0.0.1.9002
+Title: Great Plains Macroinvertebrate and Fish BCGs Calculator
+Version: 0.0.1.9000
 Authors@R: person("Benjamin D.", "Block", , "Ben.Block@tetratech.com", role = c("aut", "cre"))
            person("Erik W.", "Leppo", email="Erik.Leppo@tetratech.com", role=c("aut","cre"))
 Maintainer: Ben Block <Ben.Block@tetratech.com>
-Description: Shiny app developed for the calculation of the New Mexico 
+Description: Shiny app developed for the calculation of the Great Plains 
             macroinvertebrate and fish Biological Condition Gradient 
             (BCG) models. Developed by Tetra Tech. Includes taxa translation 
             and attributes tables.

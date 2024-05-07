@@ -1,6 +1,6 @@
 ---
 title: "Taxa Translator, About"
-date: "2024-01-12"
+date: "2024-05-06"
 output: html_fragment
 editor_options: 
   markdown: 
@@ -25,21 +25,20 @@ This function performs two steps to the input file:
 1.  "Translates" the original TaxonID to the proper OTU based on the
     selected calculation.
 
-2.  Appends the New Mexico taxa attributes, which include phylogenetic
-    data for both bugs and fish. For bugs, traits include functional
-    feeding group (FFG), habit (Habit), tolerance value (TolVal), and
-    BCG attributes (BCG_ATTR). For fish, traits include trophic Type
-    (Trophic), reproduction type (Reproduction), BCG attributes
-    (BCG_ATTR), and whether the taxon is a long-lived, native,
-    large-bodied species (LLNLB in Type field).
+2.  Appends the Great Plains taxa attributes, which include phylogenetic
+    data for both bugs and fish. For bugs, traits include.... For fish,
+    traits include BCG attributes (BCG_ATTR; BCG_ATTR2; and BCG_NUM),
+    reproduction type (REPRODUCTION), trophic type (TROPHIC), habitat
+    type (HABITAT), and whether the taxon is native to the Great Plains
+    region (NATIVE).
 
 The 'taxa translator' and attribute tables are based on river
-biomonitoring data from sandy bottom rivers in the southwestern U.S. and
-will be updated on an annual basis.
+biomonitoring data from rivers in the Great Plains and will be updated
+as necessary.
 
-Click
-<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official" target = "_blank">here</a>
-to download the tables and associated metadata files from GitHub.
+Download
+<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official" target = "_blank">taxa
+translator files</a> from GitHub.
 
 ![Filebuilder Taxa Translate
 steps.](images/FileBuilder_TaxaTrans_About_Fig1.jpg){width="80%"}
@@ -80,11 +79,8 @@ richness metrics.
 
 # Test File
 
-Click here to download a test file for
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/NM_BCGCalc/Example_Files/NM_BCG_Bugs_Count_Data_20240111.csv" target="_blank">bugs</a>
-or
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/NM_BCGCalc/Example_Files/NM_BCG_Fish_Count_Data_20240111.csv" target="_blank">fish</a>.
-
-Click
-<a href="https://github.com/Blocktt/ShinyAppDocuments/tree/main/NM_BCGCalc/Example_Files/" target="_blank">here</a>
-to download example R scripts and data (all functions).
+Click here to download a
+<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">bug
+test file</a> or
+<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">fish
+test file</a>.

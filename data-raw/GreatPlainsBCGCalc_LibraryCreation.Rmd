@@ -55,7 +55,7 @@ fn_results <- list.files(path_results
                          , recursive = TRUE)
 unlink(fn_results, recursive = TRUE) # to include dir use unlink instead of file.remove
 # Copy file to ensure directory not empty
-path_shiny <- file.path("inst", "app", "NM_BCGCalc")
+path_shiny <- file.path("inst", "app", "GreatPlainsBCGCalc")
 fn_copy    <- "remove.txt"
 path_from  <- file.path(path_shiny, "data", fn_copy)
 path_to    <- file.path(path_shiny, "results", fn_copy)
@@ -68,7 +68,7 @@ file.copy("NEWS.md", "NEWS", overwrite = TRUE)
 file.remove("NEWS.html")
 #file.remove("NEWS.md")
 #
-myPkg <- "NM_BCGCalc"
+myPkg <- "GreatPlainsBCGCalc"
 # Load Library
 library(devtools)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,7 +96,7 @@ After creating the package reload it after restarting R within RStudio (Ctrl + S
 
 ```{r, eval=FALSE}
 # Restart R within RStudio:  Ctrl + Shift + F10
-myPkg <- "NM_BCGCalc"
+myPkg <- "GreatPlainsBCGCalc"
 library(myPkg, character.only = TRUE)
 help(package=(myPkg))
 library(testthat)
@@ -112,7 +112,7 @@ Add "/_test" to gitignore
 (Needs tweaking to get it working properly)
 
 ```{r AllExamples, eval=FALSE}
-pkg <- "NM_BCGCalc"
+pkg <- "GreatPlainsBCGCalc"
 setwd("./_test")
 devtools::run_examples(pkg=pkg)
 ```
