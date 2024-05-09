@@ -31,6 +31,9 @@ Want to try running the calculator but don't have input files?
 <a href="https://github.com/Blocktt/ShinyAppDocuments/tree/main/GreatPlainsBCGCalc/Example_Files/" target="_blank">Download
 test files.</a>
 
+![Figure 1. Great Plains BCG study
+area.](images/About_Fig1_StudyArea.jpg){width="45%"}
+
 # Funding and acknowledgments
 
 Development of GreatPlainsBCGCalc and the underlying BCG model was
