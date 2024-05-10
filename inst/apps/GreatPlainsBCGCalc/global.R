@@ -89,7 +89,7 @@ dn_files_ref    <- "reference"
 dn_files_input  <- "_user_input"
 
 # Selection Choices----
-sel_community <- c("bugs", "fish")
+sel_community <- c("Fish", "Bugs_IA", "Bugs_KS", "Bugs_MO", "Bugs_NE")
 
 ##  BCG Models ----
 # url_bcg_base <- "https://github.com/leppott/BCGcalc/raw/main/inst/extdata"

@@ -1234,13 +1234,24 @@ shinyServer(function(input, output) {
 
       # QC, Index_Name
       my_comm <- input$si_community
-      if ((!"INDEX_NAME" %in% toupper(names(df_input)))
-          & (my_comm == "bugs")) {
-        df_input[, "INDEX_NAME"] <- "GP_BCG_Bugs"
-      } else if((!"INDEX_NAME" %in% toupper(names(df_input)))
-                & (my_comm == "fish")){
+      if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Fish")) {
         df_input[, "INDEX_NAME"] <- "GP_BCG_Fish"
+      } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_IA")) {
+        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_IA"
+      } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_KS")) {
+        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_KS"
+      } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_MO")) {
+        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_MO"
+      } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_NE")) {
+        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_NE"
       }## IF ~ INDEX_NAME
+
+      # QC, BMT community
+      if (startsWith(my_comm, "Bugs_")) {
+        BMT_comm <- "bugs"
+      } else {
+        BMT_comm <- "fish"
+      }
 
       ## Calc, 2, Exclude Taxa ----
       prog_detail <- "Calculate, Exclude Taxa"
@@ -1357,14 +1368,14 @@ shinyServer(function(input, output) {
       if (length(cols_flags_keep) > 0) {
         # keep extra cols from Flags (non-metric)
         df_metval <- BioMonTools::metric.values(df_input
-                                                , input$si_community
+                                                , BMT_comm
                                                 , fun.cols2keep = cols_flags_keep
                                                 , boo.Shiny = TRUE
                                                 , verbose = TRUE
                                                 , taxaid_dni = "DNI")
       } else {
         df_metval <- BioMonTools::metric.values(df_input
-                                                , input$si_community
+                                                , BMT_comm
                                                 , boo.Shiny = TRUE
                                                 , verbose = TRUE
                                                 , taxaid_dni = "DNI")
