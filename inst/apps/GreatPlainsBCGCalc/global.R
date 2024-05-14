@@ -92,8 +92,8 @@ dn_files_input  <- "_user_input"
 sel_community <- c("Fish", "Bugs_IA", "Bugs_KS", "Bugs_MO", "Bugs_NE")
 
 ##  BCG Models ----
-# url_bcg_base <- "https://github.com/leppott/BCGcalc/raw/main/inst/extdata"
-url_bcg_base <- "https://github.com/Blocktt/BCGcalc/raw/main/inst/extdata"
+url_bcg_base <- "https://github.com/leppott/BCGcalc/raw/main/inst/extdata"
+# url_bcg_base <- "https://github.com/Blocktt/BCGcalc/raw/main/inst/extdata"
 
 url_bcg_models <- file.path(url_bcg_base, "Rules.xlsx")
 temp_bcg_models <- tempfile(fileext = ".xlsx")
