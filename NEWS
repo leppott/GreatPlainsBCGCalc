@@ -1,30 +1,26 @@
-NM_BCGCalc-NEWS
+GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-01-18 12:46:52.207707
+2024-05-14 12:16:25.139745
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-01-18 12:46:52.224989
+    #> Last Update: 2024-05-14 12:16:25.158558
 
-# NM_BCGCalc 0.0.1.9000 (2024-01-18)
+# GreatPlainsBCGCalc 0.0.2.9000 (2024-05-14)
 
-- Made updates to address reviewer comments.
+- Bug models calculating correctly
 
-# NM_BCGCalc 0.0.0.9040 (2024-01-12)
+# GreatPlainsBCGCalc 0.0.1.9000 (2024-05-07)
 
-- Removed RedLakesCalc specific code for functionality.
-- Added NM BCG specific code.
-- Tested and confirmed operation of BCG calculations and file builder.
+- Updated with Great Plains specific information
+- Fish models calculating correctly
 
-# NM_BCGCalc 0.0.0.9001 (2024-01-08)
+# GreatPlainsBCGCalc 0.0.0.9000 (2024-05-06)
 
-- docs: Add base package files from RedLakesCalc (leppott)
+- Created GitHub repository
+- docs: Add base package files from NM_BCGCalc (Blocktt)
   - DESCRIPTION
   - NEWS
   - README
   - app function
-
-# RedLakesCalc 0.1.0 (2024-01-08)
-
-- Created GitHub repository

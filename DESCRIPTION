@@ -1,7 +1,7 @@
 Package: GreatPlainsBCGCalc
 Type: Package
 Title: Great Plains Macroinvertebrate and Fish BCGs Calculator
-Version: 0.0.1.9000
+Version: 0.0.2.9000
 Authors@R: person("Benjamin D.", "Block", , "Ben.Block@tetratech.com", role = c("aut", "cre"))
            person("Erik W.", "Leppo", email="Erik.Leppo@tetratech.com", role=c("aut","cre"))
 Maintainer: Ben Block <Ben.Block@tetratech.com>
@@ -12,4 +12,4 @@ Description: Shiny app developed for the calculation of the Great Plains
 License: MIT
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

@@ -1237,13 +1237,13 @@ shinyServer(function(input, output) {
       if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Fish")) {
         df_input[, "INDEX_NAME"] <- "GP_BCG_Fish"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_IA")) {
-        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_IA"
+        df_input[,"INDEX_NAME"] <- "IA_Bugs_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_KS")) {
-        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_KS"
+        df_input[,"INDEX_NAME"] <- "KS_Bugs_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_MO")) {
-        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_MO"
+        df_input[,"INDEX_NAME"] <- "MO_Bugs_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_NE")) {
-        df_input[,"INDEX_NAME"] <- "GP_BCG_Bugs_NE"
+        df_input[,"INDEX_NAME"] <- "NE_Bugs_BCG"
       }## IF ~ INDEX_NAME
 
       # QC, BMT community
