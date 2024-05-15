@@ -377,11 +377,17 @@ shinyServer(function(input, output) {
 
       # Different result subfolder based on project (bugs/fish)
       # 2024-01-12
-      if (sel_proj == "Bugs BCG") {
-        dir_proj_results <- paste("bugs", dir_proj_results, sep = "_")
-      } else if (sel_proj == "Fish BCG") {
-        dir_proj_results <- paste("fish", dir_proj_results, sep = "_")
-      }## IF ~ sel_proj
+      if (sel_proj == "Great Plains BCG (Fish)") {
+        dir_proj_results <- paste("Fish", dir_proj_results, sep = "_")
+      } else if (sel_proj == "Great Plains BCG (IA Bugs)") {
+        dir_proj_results <- paste("Bugs_IA", dir_proj_results, sep = "_")
+      } else if (sel_proj == "Great Plains BCG (KS Bugs)") {
+        dir_proj_results <- paste("Bugs_KS", dir_proj_results, sep = "_")
+      } else if (sel_proj == "Great Plains BCG (MO Bugs)") {
+        dir_proj_results <- paste("Bugs_MO", dir_proj_results, sep = "_")
+      } else if (sel_proj == "Great Plains BCG (NE Bugs)") {
+        dir_proj_results <- paste("Bugs_NE", dir_proj_results, sep = "_")
+      } ## IF ~ sel_proj
 
       dn_files <- paste(abr_results, dir_proj_results, sep = "_")
 
