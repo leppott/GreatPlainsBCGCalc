@@ -1,11 +1,16 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-05-14 12:16:25.139745
+2024-05-30 14:09:10.394203
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-05-14 12:16:25.158558
+    #> Last Update: 2024-05-30 14:09:10.423742
+
+# GreatPlainsBCGCalc 0.0.3.9000 (2024-05-30)
+
+- Add trim_ws parameter as TRUE to taxa_translate routine in Shiny app
+- Add metric calculation code for quant v. qual samples (IA and MO)
 
 # GreatPlainsBCGCalc 0.0.2.9000 (2024-05-14)
 

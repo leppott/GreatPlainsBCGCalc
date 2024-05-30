@@ -11,7 +11,7 @@
 library(shiny)
 # nolint end
 
-# Define server logic required to draw a histogram
+# Define server logic
 shinyServer(function(input, output) {
 
   # INPUT Display Names ####
@@ -481,7 +481,8 @@ shinyServer(function(input, output) {
                                                        , col_drop
                                                        , sum_n_taxa_boo
                                                        , sum_n_taxa_col
-                                                       , sum_n_taxa_group_by)
+                                                       , sum_n_taxa_group_by
+                                                       , trim_ws = TRUE)
 
       ## Munge ----
 
@@ -1371,21 +1372,161 @@ shinyServer(function(input, output) {
       } #END ~ if
 
       # Metric calculation
+      ## Split calculation methods for Quant/Qual for IA and MO
+
+      ## Quant vs. Qual ----
+      # Metric Names
+      df_metnames_xl <- readxl::read_excel(system.file("extdata/MetricNames.xlsx"
+                                                    , package = "BioMonTools")
+                                        , sheet = "MetricMetadata"
+                                        , skip = 4
+                                        , guess_max = 10^6)
+      # Metric Names by Large-Rare TRUE/FALSE
+      metnames_lr_t <- df_metnames_xl[df_metnames_xl[, "Bugs_LargeRare"] == TRUE
+                                      , "METRIC_NAME", TRUE]  #303
+      metnames_lr_f <- df_metnames_xl[df_metnames_xl[, "Bugs_LargeRare"] == FALSE
+                                      , "METRIC_NAME", TRUE] #218
+
+       # calc for different methods
       if (length(cols_flags_keep) > 0) {
         # keep extra cols from Flags (non-metric)
-        df_metval <- BioMonTools::metric.values(df_input
-                                                , BMT_comm
-                                                , fun.cols2keep = cols_flags_keep
-                                                , boo.Shiny = TRUE
-                                                , verbose = TRUE
-                                                , taxaid_dni = "DNI")
+        fun_cols2keep <- cols_flags_keep
       } else {
+        fun_cols2keep <- NULL
+      }## IF ~ length(col_rules_keep)
+
+      count_lr <- 999
+      # N_TAXA; blank, na, 0, -99 to 999
+      df_input <- df_input %>%
+        dplyr::mutate(N_TAXA = dplyr::case_when(N_TAXA <= 0 ~ count_lr
+                                                , is.na(N_TAXA) ~ count_lr
+                                                , N_TAXA == "" ~ count_lr
+                                                , .default = N_TAXA
+        ))## mutate ~ case_when
+
+      #
+      if (my_comm == "Bugs_IA") {
+        msg <- paste0("Index_Name, ", my_comm)
+        message(msg)
+
+        # Check if missing BUGGEAR
+        boo_buggear <- "BUGGEAR" %in% toupper(names(df_input))
+        if (!boo_buggear) {
+          # pop up
+          msg <- "Column is missing (IA data only, BUGGEAR)!"
+          shinyalert::shinyalert(title = "BCG Calculation Error"
+                                 , text = msg
+                                 , type = "error"
+                                 , closeOnEsc = TRUE
+                                 , closeOnClickOutside = TRUE)
+          validate(msg)
+        }## IF ~ boo_buggear
+
+
+
+
+
+        # create LR TRUE and LR FALSE datasets
+        df_input_lr_t <- df_input
+        df_input_lr_f <- df_input %>%
+          dplyr::mutate(BUGGEAR_UC = toupper(BUGGEAR)) %>%
+          dplyr::filter(BUGGEAR_UC != "QUALITATIVE")
+        msg <- paste0("Data, Qual, dim = ", paste(dim(df_input_lr_t), collapse = ", "))
+        message(msg)
+        msg <- paste0("Data, Quant, dim = ", paste(dim(df_input_lr_f), collapse = ", "))
+        message(msg)
+        # calc
+        if (nrow(df_input_lr_t) == 0) {
+          # no large-rare samples so run on 'all' data
+          df_metval <- BioMonTools::metric.values(df_input
+                                          , fun.Community = BMT_comm
+                                          , fun.MetricNames = metnames_lr_f
+                                          , fun.cols2keep = fun_cols2keep
+                                          , boo.Shiny = TRUE
+                                          , verbose = TRUE
+                                          , taxaid_dni = "DNI")
+
+          } else {
+
+          df_metval_lr_t <- metric.values(df_input_lr_t
+                                          , fun.Community = BMT_comm
+                                          , fun.MetricNames = metnames_lr_t
+                                          , fun.cols2keep = fun_cols2keep
+                                          , boo.Shiny = TRUE
+                                          , verbose = TRUE
+                                          , taxaid_dni = "DNI")
+          df_metval_lr_f <- BioMonTools::metric.values(df_input_lr_f
+                                          , fun.Community = BMT_comm
+                                          , fun.MetricNames = metnames_lr_f
+                                          , fun.cols2keep = fun_cols2keep
+                                          , boo.Shiny = TRUE
+                                          , verbose = TRUE
+                                          , taxaid_dni = "DNI")
+          # merge
+          # drop ni_total (default) from lr_t
+          df_metval <- merge(df_metval_lr_t[, !(names(df_metval_lr_t) %in% "ni_total")]
+                             , df_metval_lr_f
+                             , by = c("SAMPLEID", "INDEX_NAME", "INDEX_CLASS"))
+        }## IF ~ nrow(df_input_lr_t)
+      #
+      } else if (my_comm == "Bugs_MO") {
+        msg <- paste0("Index_Name, ", my_comm)
+        message(msg)
+
+        # create LR TRUE and LR FALSE datasets
+        df_input_lr_t <- df_input
+        df_input_lr_f <- df_input %>%
+          dplyr::filter(N_TAXA != count_lr)
+        msg <- paste0("Data, Qual, dim = ", paste(dim(df_input_lr_t), collapse = ", "))
+        message(msg)
+        msg <- paste0("Data, Quant, dim = ", paste(dim(df_input_lr_f), collapse = ", "))
+        message(msg)
+
+        if (nrow(df_input_lr_t) == 0) {
+          # no large-rare samples so run on 'all' data
+          df_metval <- BioMonTools::metric.values(df_input
+                                                  , fun.Community = BMT_comm
+                                                  , fun.MetricNames = metnames_lr_f
+                                                  , fun.cols2keep = fun_cols2keep
+                                                  , boo.Shiny = TRUE
+                                                  , verbose = TRUE
+                                                  , taxaid_dni = "DNI")
+
+        } else {
+
+          df_metval_lr_t <- metric.values(df_input_lr_t
+                                          , fun.Community = BMT_comm
+                                          , fun.MetricNames = metnames_lr_t
+                                          , fun.cols2keep = fun_cols2keep
+                                          , boo.Shiny = TRUE
+                                          , verbose = TRUE
+                                          , taxaid_dni = "DNI")
+          df_metval_lr_f <- BioMonTools::metric.values(df_input_lr_f
+                                                       , fun.Community = BMT_comm
+                                                       , fun.MetricNames = metnames_lr_f
+                                                       , fun.cols2keep = fun_cols2keep
+                                                       , boo.Shiny = TRUE
+                                                       , verbose = TRUE
+                                                       , taxaid_dni = "DNI")
+          # merge
+          # drop ni_total (default) from lr_t
+          df_metval <- merge(df_metval_lr_t[, !(names(df_metval_lr_t) %in% "ni_total")]
+                             , df_metval_lr_f
+                             , by = c("SAMPLEID", "INDEX_NAME", "INDEX_CLASS"))
+        }## IF ~ nrow(df_input_lr_t)
+
+
+      } else {
+        msg <- paste0("Index_Name, ", "NOT IA or MO.")
+        message(msg)
         df_metval <- BioMonTools::metric.values(df_input
                                                 , BMT_comm
+                                                , fun.cols2keep = fun_cols2keep
                                                 , boo.Shiny = TRUE
                                                 , verbose = TRUE
                                                 , taxaid_dni = "DNI")
-      }## IF ~ length(col_rules_keep)
+      }## IF ~ my_comm
+
 
 
       ### Save Results ----
