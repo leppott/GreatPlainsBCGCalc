@@ -1,11 +1,16 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-06-06 11:29:37.939419
+2024-06-06 12:38:56.570603
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-06-06 11:29:37.963957
+    #> Last Update: 2024-06-06 12:38:56.593341
+
+# GreatPlainsBCGCalc 0.0.3.9002 (2024-06-06)
+
+- refactor: Added hooks for BugGear selection box for Bugs_IA BCG
+  calculation
 
 # GreatPlainsBCGCalc 0.0.3.9001 (2024-06-06)
 

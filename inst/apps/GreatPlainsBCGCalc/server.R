@@ -1169,6 +1169,17 @@ browser()
 
   #~~~~CALC~~~~----
 
+  # Calc, BCG, UI----
+
+  output$UI_calc_bcg_user_col_buggear <- renderUI({
+    str_col <- "Column, IA Bug Gear (BugGear)"
+    selectInput("calc_bcg_user_col_buggear"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "BugGear"
+                , multiple = FALSE)
+  })## UI_colnames
+
   # Calc, BCG ----
   ## b_Calc_BCG ----
   observeEvent(input$b_calc_bcg, {
