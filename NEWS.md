@@ -1,11 +1,16 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-05-30 14:09:10.394203
+2024-06-06 11:29:37.939419
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-05-30 14:09:10.423742
+    #> Last Update: 2024-06-06 11:29:37.963957
+
+# GreatPlainsBCGCalc 0.0.3.9001 (2024-06-06)
+
+- refactor: Update map_meta file for missing column name
+  - Gets rid of message to console; New names: …1
 
 # GreatPlainsBCGCalc 0.0.3.9000 (2024-05-30)
 

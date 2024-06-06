@@ -238,7 +238,7 @@ shinyServer(function(input, output) {
   ## b_Calc_TaxaTrans ----
   observeEvent(input$b_calc_taxatrans, {
     shiny::withProgress({
-
+browser()
       # time, start
       tic <- Sys.time()
 
