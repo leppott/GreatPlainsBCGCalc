@@ -21,6 +21,10 @@ knitr::opts_chunk$set(
 cat(paste0("Last Update: ",Sys.time()))
 ```
 
+# GreatPlainsBCGCalc 0.0.3.9003 (2024-06-06)
+
+* refactor: 'GP_BCG_Fish' to 'GP_Fish_BCG' to match Bug names
+
 # GreatPlainsBCGCalc 0.0.3.9002 (2024-06-06)
 
 * refactor: Added hooks for BugGear selection box for Bugs_IA BCG calculation

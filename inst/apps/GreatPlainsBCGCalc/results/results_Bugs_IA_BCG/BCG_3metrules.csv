@@ -1,0 +1,117 @@
+"Index_Name","INDEX_CLASS","Level","Metric_Name","Numeric_Rules","Symbol","Lower","Upper","Increase","Description","Rule_Type","Exc_Rule","Note_Rule"
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_BCG_att1i234b",">=3 (1-5)",">=",1,5,TRUE,"number taxa - BCG Attribute Ii + II + III + IV_better","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_Coleo_BCG_att234b4m",">6 (4-9)",">",4,9,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_Ephem_BCG_att234b4m",">=8 (5-11)",">=",5,11,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_Odon_BCG_att234b4m",">=5 (3-7)",">=",3,7,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_Trich_BCG_att234b4m",">3 (2-5)",">",2,5,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"pi_OligoChiroHydro","<=65 (60-70)","<=",60,70,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"pi_BCG_att4w5","<=35 (30-40)","<=",30,40,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"pt_BCG_att4w5","<=25 (20-30)","<=",20,30,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"pi_dom02","<=55 (50-60)","<=",50,60,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_total",">=40 (35-45)",">=",35,45,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_COET",">=30 (25-35)",">=",25,35,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",2,"nt_habit_climbcling",">=25 (20-30)",">=",20,30,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_BCG_att1i234b",">1 (0-3)",">",0,3,TRUE,"number taxa - BCG Attribute Ii + II + III + IVb","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_Coleo_BCG_att234b4m",">2 (1-4)",">",1,4,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_Ephem_BCG_att234b4m",">=5 (2-8)",">=",2,8,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_Odon_BCG_att234b4m",">1 (0-3)",">",0,3,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_Trich_BCG_att234b4m",">0 (0-1)",">",0,1,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_total",">=35 (30-40)",">=",30,40,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_COET",">=25 (20-30)",">=",20,30,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"nt_habit_climbcling",">=20 (15-25)",">=",15,25,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"pi_BCG_att4w5","<=45 (40-50)","<=",40,50,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"pt_BCG_att4w5","<=40 (35-45)","<=",35,45,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"pi_OligoChiroHydro","<=70 (65-75)","<=",65,75,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",3,"pi_dom02","<=65 (60-70)","<=",60,70,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"nt_total",">27 (25-30)",">",25,30,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"nt_COET",">17 (15-20)",">",15,20,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"nt_habit_climbcling",">12 (10-15)",">",10,15,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"pi_BCG_att4w5","<=60 (55-65)","<=",55,65,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"pt_BCG_att4w5","<=50 (45-55)","<=",45,55,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"pi_OligoChiroHydro","<=85 (80-90)","<=",80,90,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",4,"pi_dom02","<=75 (70-80)","<=",70,80,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",5,"nord_COET",">1 (0-3)",">",0,3,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","CIP_medlrg_soft",5,"ni_total",">=200 (150-250)",">=",150,250,TRUE,"number individuals - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",5,"nt_total",">21 (18-25)",">",18,25,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",5,"pi_BCG_att4w5","<=70 (65-75)","<=",65,75,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2",NA
+"IA_Bugs_BCG","CIP_medlrg_soft",5,"pi_dom02","<=90 (85-95)","<=",85,95,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_BCG_att1i234b",">=3 (1-5)",">=",1,5,TRUE,"number taxa - BCG Attribute Ii + II + III + IV_better","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_Coleo_BCG_att234b4m",">6 (4-9)",">",4,9,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_Ephem_BCG_att234b4m",">=8 (5-11)",">=",5,11,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_Odon_BCG_att234b4m",">3 (2-5)",">",2,5,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_Trich_BCG_att234b4m",">5 (3-8)",">",3,8,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"pi_OligoChiroHydro","<=60 (55-65)","<=",55,65,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"pi_BCG_att4w5","<=35 (30-40)","<=",30,40,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"pt_BCG_att4w5","<=25 (20-30)","<=",20,30,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"pi_dom02","<=45 (40-50)","<=",40,50,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_total",">=46 (42-50)",">=",42,50,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_COET",">=35 (30-40)",">=",30,40,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",2,"nt_habit_climbcling",">=30 (25-35)",">=",25,35,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_BCG_att1i234b",">1 (0-3)",">",0,3,TRUE,"number taxa - BCG Attribute Ii + II + III + IVb","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_Coleo_BCG_att234b4m",">2 (1-4)",">",1,4,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_Ephem_BCG_att234b4m",">4 (2-7)",">",2,7,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_Odon_BCG_att234b4m",">1 (0-3)",">",0,3,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_Trich_BCG_att234b4m",">2 (1-4)",">",1,4,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_total",">38 (35-42)",">",35,42,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_COET",">=26 (22-30)",">=",22,30,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"nt_habit_climbcling",">21 (18-25)",">",18,25,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"pi_BCG_att4w5","<=45 (40-50)","<=",40,50,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"pt_BCG_att4w5","<=35 (30-40)","<=",30,40,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"pi_OligoChiroHydro","<=70 (65-75)","<=",65,75,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",3,"pi_dom02","<=55 (50-60)","<=",50,60,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"nt_total",">=30 (25-35)",">",25,35,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"nt_COET",">19 (17-22)",">",17,22,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"nt_habit_climbcling",">=14 (10-18)",">",10,18,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"pi_BCG_att4w5","<=55 (50-60)","<=",50,60,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"pt_BCG_att4w5","<=45 (40-50)","<=",40,50,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"pi_OligoChiroHydro","<=80 (75-85)","<=",75,85,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",4,"pi_dom02","<=70 (65-75)","<=",65,75,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",5,"nord_COET",">1 (0-3)",">",0,3,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",5,"ni_total",">=200 (150-250)",">=",150,250,TRUE,"number individuals - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",5,"nt_total",">=15 (10-20)",">",10,20,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",5,"pi_BCG_att4w5","<=75 (70-80)","<=",70,80,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2",NA
+"IA_Bugs_BCG","WCBP_medlrg_soft",5,"pi_dom02","<=80 (75-85)","<=",75,85,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_BCG_att1i234b",">7 (5-10)",">",5,10,TRUE,"number taxa - BCG Attribute Ii + II + III + IV_better","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_Coleo_BCG_att234b4m",">=8 (5-11)",">=",5,11,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_Ephem_BCG_att234b4m",">=9 (6-12)",">=",6,12,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_Odon_BCG_att234b4m",">=5 (3-7)",">=",3,7,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_Trich_BCG_att234b4m",">=8 (6-10)",">=",6,10,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"pi_OligoChiroHydro","<=60 (55-65)","<=",55,65,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"pi_BCG_att4w5","<=25 (20-30)","<=",20,30,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"pt_BCG_att4w5","<23 (20-25)","<=",20,25,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"pi_dom02","<=45 (40-50)","<=",40,50,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_total",">=55 (50-60)",">=",50,60,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_COET",">=40 (35-45)",">=",35,45,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",2,"nt_habit_climbcling",">37 (35-40)",">",35,40,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_BCG_att1i234b",">3 (2-5)",">",2,5,TRUE,"number taxa - BCG Attribute Ii + II + III + IVb","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_Coleo_BCG_att234b4m",">5 (3-8)",">",3,8,TRUE,"number taxa - Coleoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_Ephem_BCG_att234b4m",">6 (4-9)",">",4,9,TRUE,"number taxa - Ephemeroptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_Odon_BCG_att234b4m",">1 (0-3)",">",0,3,TRUE,"number taxa - Odonata BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_Trich_BCG_att234b4m",">2 (1-4)",">",1,4,TRUE,"number taxa - Trichoptera BCG Attribute II + III + IV_better + IV_middle","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_total",">=45 (40-50)",">",40,50,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_COET",">=30 (25-35)",">=",25,35,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"nt_habit_climbcling",">=30 (25-35)",">=",25,35,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"pi_BCG_att4w5","<=35 (30-40)","<=",30,40,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"pt_BCG_att4w5","<29 (25-32)","<=",22,32,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"pi_OligoChiroHydro","<=70 (65-75)","<=",65,75,FALSE,"percent (0-100) individuals - SubClass Oligochaeta + Family Chironomidae + Family Hydropsychidae","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",3,"pi_dom02","<=55 (50-60)","<=",50,60,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"nord_COET",">3 (3-4)",">",3,4,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"nt_total",">37 (35-40)",">",35,40,TRUE,"number taxa - total","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"nt_COET",">22 (20-25)",">",20,25,TRUE,"number taxa - Orders Coleoptera, Odonata, Ephemertopera, and Trichoptera (COET)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"nt_habit_climbcling",">22 (20-25)",">",20,25,TRUE,"number taxa - Habit - climbers (CB) and clingers (CN)","Rule0","SMALL2A",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"pi_BCG_att4w5","<=50 (45-55)","<=",45,55,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"pt_BCG_att4w5","<35 (32-37)","<",32,37,FALSE,"percent (0-100) taxa - BCG Attribute IV_worse + V","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",4,"pi_dom02","<=65 (60-70)","<=",60,70,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2B",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",5,"nord_COET",">1 (0-3)",">",0,3,TRUE,"number of unique - orders - Order Coleoptera, Odonata, Ephemeroptera, or Trichoptera","Rule0",NA,NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",5,"ni_total",">=200 (150-250)",">=",150,250,TRUE,"number individuals - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",5,"nt_total",">=30 (25-35)",">",25,35,TRUE,"number taxa - total","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",5,"pi_BCG_att4w5","<=60 (55-65)","<=",55,65,FALSE,"percent (0-100) individuals - BCG Attribute IV_worse + V","Rule0","SMALL2",NA
+"IA_Bugs_BCG","IowaSrf_medlrg_soft",5,"pi_dom02","<=80 (75-85)","<=",75,85,FALSE,"percent (0-100) individuals - two most dominant taxa","Rule0","SMALL2",NA

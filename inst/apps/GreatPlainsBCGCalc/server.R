@@ -1253,7 +1253,7 @@ browser()
       # QC, Index_Name
       my_comm <- input$si_community
       if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Fish")) {
-        df_input[, "INDEX_NAME"] <- "GP_BCG_Fish"
+        df_input[, "INDEX_NAME"] <- "GP_Fish_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_IA")) {
         df_input[,"INDEX_NAME"] <- "IA_Bugs_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_KS")) {

@@ -1,0 +1,97 @@
+Index_Name,INDEX_CLASS,BugSeriesID,BugSessionID,BugGearMOD,EstSampleDate,FinalID,Indiv,Exclude,N_Taxa,TaxaID,SampleID
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Baetidae,7,FALSE,7,Baetidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Baetis intercalaris,9,FALSE,9,Baetis intercalaris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Cheumatopsyche,24,FALSE,24,Cheumatopsyche,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Chironomidae,9,FALSE,9,Chironomidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Fallceon quilleri,2,FALSE,2,Fallceon quilleri,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Heptageniidae,1,FALSE,1,Heptageniidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Hydropsyche arinale,4,FALSE,4,Hydropsyche arinale,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Hydropsyche simulans,20,FALSE,20,Hydropsyche simulans,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Hydropsychidae,26,FALSE,26,Hydropsychidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Isonychia,1,FALSE,1,Isonychia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4038,Hess,30-Aug-10,Oligochaeta,2,FALSE,2,Oligochaeta,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Acentrella parvula,2,FALSE,2,Acentrella parvula,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Baetidae,4,FALSE,4,Baetidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Baetis,2,FALSE,2,Baetis,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Baetis intercalaris,2,FALSE,2,Baetis intercalaris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Caenis hilaris,2,FALSE,2,Caenis hilaris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Cheumatopsyche,14,FALSE,14,Cheumatopsyche,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Chironomidae,36,FALSE,36,Chironomidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Corydalus,3,FALSE,3,Corydalus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Cura,1,FALSE,1,Cura,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Fallceon quilleri,1,FALSE,1,Fallceon quilleri,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydropsyche arinale,1,FALSE,1,Hydropsyche arinale,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydropsyche betteni,2,FALSE,2,Hydropsyche betteni,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydropsyche placoda,1,FALSE,1,Hydropsyche placoda,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydropsyche simulans,7,FALSE,7,Hydropsyche simulans,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydropsychidae,10,FALSE,10,Hydropsychidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydroptila,1,FALSE,1,Hydroptila,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Hydroptilidae,1,FALSE,1,Hydroptilidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Isonychia,3,FALSE,3,Isonychia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Maccaffertium,4,FALSE,4,Maccaffertium,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Maccaffertium terminatum,1,FALSE,1,Maccaffertium terminatum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Ochrotrichia,1,FALSE,1,Ochrotrichia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Trichoptera,1,FALSE,1,Trichoptera,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4039,Hess,30-Aug-10,Tricorythodes,5,FALSE,5,Tricorythodes,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Baetidae,6,FALSE,6,Baetidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Baetis intercalaris,12,FALSE,12,Baetis intercalaris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Cheumatopsyche,22,FALSE,22,Cheumatopsyche,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Chironomidae,17,FALSE,17,Chironomidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Fallceon quilleri,12,FALSE,12,Fallceon quilleri,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Heptageniidae,3,FALSE,3,Heptageniidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Hydropsyche,5,FALSE,5,Hydropsyche,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Hydropsyche arinale,3,FALSE,3,Hydropsyche arinale,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Hydropsyche simulans,12,FALSE,12,Hydropsyche simulans,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Hydropsychidae,3,FALSE,3,Hydropsychidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Isonychia,7,FALSE,7,Isonychia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Maccaffertium exiguum,1,FALSE,1,Maccaffertium exiguum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Ochrotrichia,3,FALSE,3,Ochrotrichia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4040,Hess,30-Aug-10,Simuliidae,1,FALSE,1,Simuliidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Agabus,1,FALSE,1,Agabus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Argia,6,FALSE,6,Argia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Baetidae,2,FALSE,2,Baetidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Baetis intercalaris,8,FALSE,8,Baetis intercalaris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Caenis,1,FALSE,1,Caenis,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Caenis latipennis,2,FALSE,2,Caenis latipennis,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Calopteryx,1,FALSE,1,Calopteryx,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Carabidae,1,FALSE,1,Carabidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Centroptilum,4,FALSE,4,Centroptilum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Cheumatopsyche,25,FALSE,25,Cheumatopsyche,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Chironomidae,33,FALSE,33,Chironomidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Corixidae,12,FALSE,12,Corixidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Corydalus,3,FALSE,3,Corydalus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Culicidae,1,FALSE,1,Culicidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Dineutus,1,FALSE,1,Dineutus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Fallceon quilleri,5,FALSE,5,Fallceon quilleri,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Gomphus,8,FALSE,8,Gomphus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Helichus lithophilus,1,FALSE,1,Helichus lithophilus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Heptagenia elegantula,3,FALSE,3,Heptagenia elegantula,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Heptageniidae,5,FALSE,5,Heptageniidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hetaerina,1,FALSE,1,Hetaerina,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Heteroceridae,2,FALSE,2,Heteroceridae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hexagenia limbata,11,FALSE,11,Hexagenia limbata,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hyalella,3,FALSE,3,Hyalella,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hydropsyche arinale,5,FALSE,5,Hydropsyche arinale,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hydropsyche betteni,1,FALSE,1,Hydropsyche betteni,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hydropsyche simulans,5,FALSE,5,Hydropsyche simulans,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Hydropsychidae,3,FALSE,3,Hydropsychidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Isonychia,12,FALSE,12,Isonychia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Labiobaetis propinquus,1,FALSE,1,Labiobaetis propinquus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Laccobius,1,FALSE,1,Laccobius,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Maccaffertium exiguum,8,FALSE,8,Maccaffertium exiguum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Maccaffertium terminatum,3,FALSE,3,Maccaffertium terminatum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Nectopsyche diarina,1,FALSE,1,Nectopsyche diarina,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Ochrotrichia,1,FALSE,1,Ochrotrichia,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Oligochaeta,2,FALSE,2,Oligochaeta,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Orconectes,2,FALSE,2,Orconectes,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Paracymus,1,FALSE,1,Paracymus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Physa,4,FALSE,4,Physa,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Progomphus,7,FALSE,7,Progomphus,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Sigara,5,FALSE,5,Sigara,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Silvius,2,FALSE,2,Silvius,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Somatochlora,1,FALSE,1,Somatochlora,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Sparbarus lacustris,3,FALSE,3,Sparbarus lacustris,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Sphaeriidae,1,FALSE,1,Sphaeriidae,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Stenacron interpunctatum,49,FALSE,49,Stenacron interpunctatum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Stenonema femoratum,2,FALSE,2,Stenonema femoratum,1013
+IA_Bugs_BCG,CIP_medlrg_soft,1013,4041,Qualitative,30-Aug-10,Tricorythodes,19,FALSE,19,Tricorythodes,1013
