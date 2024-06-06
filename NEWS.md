@@ -1,11 +1,15 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-06-06 13:00:35.955014
+2024-06-06 15:12:12.207532
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-06-06 13:00:35.98178
+    #> Last Update: 2024-06-06 15:12:12.229485
+
+# GreatPlainsBCGCalc 0.0.3.9004 (2024-06-06)
+
+- no changes but BCGcalc package update to v2.1.0.9000
 
 # GreatPlainsBCGCalc 0.0.3.9003 (2024-06-06)
 
