@@ -1,7 +1,7 @@
 Package: GreatPlainsBCGCalc
 Type: Package
 Title: Great Plains Macroinvertebrate and Fish BCGs Calculator
-Version: 0.0.3.9004
+Version: 0.0.3.9005
 Authors@R: person("Benjamin D.", "Block", , "Ben.Block@tetratech.com", role = c("aut", "cre"))
            person("Erik W.", "Leppo", email="Erik.Leppo@tetratech.com", role=c("aut","cre"))
 Maintainer: Ben Block <Ben.Block@tetratech.com>

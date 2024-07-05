@@ -238,7 +238,7 @@ shinyServer(function(input, output) {
   ## b_Calc_TaxaTrans ----
   observeEvent(input$b_calc_taxatrans, {
     shiny::withProgress({
-browser()
+
       # time, start
       tic <- Sys.time()
 
@@ -482,7 +482,8 @@ browser()
                                                        , sum_n_taxa_boo
                                                        , sum_n_taxa_col
                                                        , sum_n_taxa_group_by
-                                                       , trim_ws = TRUE)
+                                                       , trim_ws = TRUE
+                                                       , match_caps = TRUE)
 
       ## Munge ----
 
@@ -1459,7 +1460,7 @@ browser()
 
           } else {
 
-          df_metval_lr_t <- metric.values(df_input_lr_t
+          df_metval_lr_t <- BioMonTools::metric.values(df_input_lr_t
                                           , fun.Community = BMT_comm
                                           , fun.MetricNames = metnames_lr_t
                                           , fun.cols2keep = fun_cols2keep
