@@ -482,7 +482,8 @@ shinyServer(function(input, output) {
                                                        , sum_n_taxa_boo
                                                        , sum_n_taxa_col
                                                        , sum_n_taxa_group_by
-                                                       , trim_ws = TRUE)
+                                                       , trim_ws = TRUE
+                                                       , match_caps = TRUE)
 
       ## Munge ----
 
@@ -1169,6 +1170,17 @@ shinyServer(function(input, output) {
 
   #~~~~CALC~~~~----
 
+  # Calc, BCG, UI----
+
+  output$UI_calc_bcg_user_col_buggear <- renderUI({
+    str_col <- "Column, IA Bug Gear (BugGear)"
+    selectInput("calc_bcg_user_col_buggear"
+                , label = str_col
+                , choices = c("", names(df_import()))
+                , selected = "BugGear"
+                , multiple = FALSE)
+  })## UI_colnames
+
   # Calc, BCG ----
   ## b_Calc_BCG ----
   observeEvent(input$b_calc_bcg, {
@@ -1242,7 +1254,7 @@ shinyServer(function(input, output) {
       # QC, Index_Name
       my_comm <- input$si_community
       if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Fish")) {
-        df_input[, "INDEX_NAME"] <- "GP_BCG_Fish"
+        df_input[, "INDEX_NAME"] <- "GP_Fish_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_IA")) {
         df_input[,"INDEX_NAME"] <- "IA_Bugs_BCG"
       } else if ((!"INDEX_NAME" %in% toupper(names(df_input))) & (my_comm == "Bugs_KS")) {
@@ -1448,7 +1460,7 @@ shinyServer(function(input, output) {
 
           } else {
 
-          df_metval_lr_t <- metric.values(df_input_lr_t
+          df_metval_lr_t <- BioMonTools::metric.values(df_input_lr_t
                                           , fun.Community = BMT_comm
                                           , fun.MetricNames = metnames_lr_t
                                           , fun.cols2keep = fun_cols2keep

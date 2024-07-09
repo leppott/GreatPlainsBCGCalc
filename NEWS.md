@@ -1,11 +1,33 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-05-30 14:09:10.394203
+2024-07-05 10:08:23.216628
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-05-30 14:09:10.423742
+    #> Last Update: 2024-07-05 10:08:23.253573
+
+# GreatPlainsBCGCalc 0.0.3.9005 (2024-07-05)
+
+- refactor: Clean up server.R from some testing
+
+# GreatPlainsBCGCalc 0.0.3.9004 (2024-06-06)
+
+- no changes but BCGcalc package update to v2.1.0.9000
+
+# GreatPlainsBCGCalc 0.0.3.9003 (2024-06-06)
+
+- refactor: ‘GP_BCG_Fish’ to ‘GP_Fish_BCG’ to match Bug names
+
+# GreatPlainsBCGCalc 0.0.3.9002 (2024-06-06)
+
+- refactor: Added hooks for BugGear selection box for Bugs_IA BCG
+  calculation
+
+# GreatPlainsBCGCalc 0.0.3.9001 (2024-06-06)
+
+- refactor: Update map_meta file for missing column name
+  - Gets rid of message to console; New names: …1
 
 # GreatPlainsBCGCalc 0.0.3.9000 (2024-05-30)
 

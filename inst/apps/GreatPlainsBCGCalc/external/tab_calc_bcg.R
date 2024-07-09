@@ -16,6 +16,10 @@ function() {
                      , label = "Community"
                      , choices = c("", sel_community))
 
+       # , p("Required Fields, IA Bugs only")
+       # , h6("If the default value is present (BugGear) it will be auto-populated.")
+       # , uiOutput("UI_calc_bcg_user_col_buggear")
+
        , h4("C. Mark Redundant (Non-Distinct) Taxa")
        , includeHTML(file.path("www", "rmd_html", "ShinyHTML_RedundantTaxa.html"))
        , checkboxInput("ExclTaxa"
