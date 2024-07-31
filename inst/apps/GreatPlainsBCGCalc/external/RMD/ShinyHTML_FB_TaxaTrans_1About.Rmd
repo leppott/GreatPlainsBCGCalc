@@ -1,6 +1,6 @@
 ---
 title: "Taxa Translator, About"
-date: "2024-05-06"
+date: "2024-07-31"
 output: html_fragment
 editor_options: 
   markdown: 
@@ -14,73 +14,122 @@ knitr::opts_chunk$set(echo = FALSE
                       , message = FALSE)
 ```
 
-# Purpose
+# Prepare an input file with *File Builder*
 
-Create an input file with the proper Operational Taxonomic Units (OTUs)
-and attributes for each calculation. Bug and fish files should be
-created separately.
+The BCG models are calibrated for specific collection and processing
+protocols. Make sure you are using the BCG model that is appropriate for
+your samples.
 
-This function performs two steps to the input file:
+-   Bug methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Bug_Methods_20240730.pdf" target="blank">PDF</a>]
 
-1.  "Translates" the original TaxonID to the proper OTU based on the
-    selected calculation.
+-   Fish methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Fish_Methods_20240730.pdf" target="blank">PDF</a>]
 
-2.  Appends the Great Plains taxa attributes, which include phylogenetic
-    data for both bugs and fish. For bugs, traits include.... For fish,
-    traits include BCG attributes (BCG_ATTR; BCG_ATTR2; and BCG_NUM),
-    reproduction type (REPRODUCTION), trophic type (TROPHIC), habitat
-    type (HABITAT), and whether the taxon is native to the Great Plains
-    region (NATIVE).
+EXAMPLE INPUT FILES
 
-The 'taxa translator' and attribute tables are based on river
-biomonitoring data from rivers in the Great Plains and will be updated
-as necessary.
+-   Bugs
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Bugs_20240730.zip" target="blank">ZIP</a>]
 
-Download
-<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official" target = "_blank">taxa
-translator files</a> from GitHub.
+-   Fish
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Fish_20240730.zip" target="blank">ZIP</a>]
 
-![Filebuilder Taxa Translate
-steps.](images/FileBuilder_TaxaTrans_About_Fig1.jpg){width="80%"}
+The File Builder joins the taxon name in the input file with the
+‘original taxaID’ column in the
+<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official/GP" target="blank">Taxa
+Translator table</a> and performs two functions:
 
-# Input File
+-   Translates the original taxon name to the proper OTU for the
+    calculation.
 
-There are three required fields:
+-   Adds in new columns with taxa attributes and hierarchy (e.g., Order,
+    Family) that are needed for the metric calculations.
 
--   SampleID
+The input file must be a comma-separated file (CSV).
 
-    -   Unique sample identifier. Includes any replicate/duplicate
-        information.
+<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/IndexNameClass_20240730.zip" target="blank">Index
+Name and Index Class</a> are required for all calculations (they tell R
+which BCG rules and IBI metrics to apply). See tables at bottom of page.
 
--   TaxaID
+The input file must be a comma-separated file (CSV). It can include data
+for multiple samples, sites and Index Classes.
 
-    -   Unique taxa name (use scientific name for both bugs and fish)
+Required fields for all calculations. Column names are flexible (use
+drop-down menus to match).
 
--   Count of individuals (e.g., N_Taxa)
+```{r table_req}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
 
-    -   Count of taxa individuals
+# Data
+fn <- "Requirements.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "Req_metadata")
 
-If you named the required fields differently in your input file, it's
-ok. Click on the drop-down menus. The list of fields in your input file
-will appear. Select the correct column headings.
+options(knitr.kable.NA = '')
+df %>%
+  kable() %>%
+  kable_styling(full_width = F, position = "left")
+```
 
-Optional - if there are additional fields in the input file that you
-want to carry through into the output file (e.g., stationID, collection
-date, latitude, longitude), click on the 'Columns to keep in output'
-box. The list of fields in your input file will appear. Click on the
-fields that you want to include. If you change your mind and want to
-remove a field, click on it and hit 'delete.'
+There is **one additional required field for the Iowa bug BCG** (column
+name must match exactly):
 
-IMPORTANT: Do not repeat the required columns. Do not include Life Stage
-or other fields that are unique to the taxa and not the sample (such as
-notes from the taxonomist). If a taxon occurs in more than one row for a
-given sample, it will lead to double-counting of that taxon in the
-richness metrics.
+-   BugGear (text entries: Qualitative, Surber, Hess, Artificial
+    Substrate, Low-Flow Artificial Substrate and Anchored Artifical
+    Substrate)
 
-# Test File
+Optional fields (e.g., SiteID, latitude, longitude, collection date) can
+be selected as well and will be carried through into the File Builder
+output file.
 
-Click here to download a
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">bug
-test file</a> or
-<a href="https://raw.githubusercontent.com/Blocktt/ShinyAppDocuments/main/GreatPlainsBCGCalc/Example_Files/GreatPlains_Fish_BioMonTools_Input_20240502.csv" target="_blank">fish
-test file</a>.
+IMPORTANT! Do not include Life Stage or other fields that might cause a
+taxon to occur in more than one row for a given sample (which could lead
+to double-counting of that taxon in the richness metrics).
+
+Below are the unique combinations of INDEX_NAME and INDEX_CLASS and
+descriptions of how sites should be correctly assigned.
+
+**Fish**
+
+```{r table_req3}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+
+# Data
+fn <- "Requirements.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "Fish_classes")
+
+options(knitr.kable.NA = '')
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+**Bugs (as of 07/30/2024; more Index Classes will be added)**
+
+```{r table_req4}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+
+# Data
+fn <- "Requirements.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "Bug_classes")
+
+options(knitr.kable.NA = '')
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+------------------------------------------------------------------------
+
+Last updated: 2024-07-31

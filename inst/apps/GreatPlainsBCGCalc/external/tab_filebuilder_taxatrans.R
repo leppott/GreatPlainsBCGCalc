@@ -5,7 +5,7 @@ function() {
     sidebarPanel(h2("File Builder: Taxa Translate and Attribute Assignment")
             , useShinyjs()
 
-            , p("The process below will combine user data with an official taxa list.")
+            , p("Only columns specified below will be carried through into the output file.")
             #, br()
             , h4("A. Upload a File")
             , p("If no file name showing below repeat 'Import File' in the left sidebar.")
@@ -24,9 +24,12 @@ function() {
             # N_Taxa (really for group_by)
             , uiOutput("UI_taxatrans_user_col_n_taxa")
 
-            , h6("Optional Fields")
-            , p("All columns other than those specified above (required) or below (optional) will be dropped.
-                IMPORTANT! Do not repeat the required columns, and do not include Life Stage or other fields that might cause a taxon to occur in more than one row for a given sample (which could lead to double-counting of that taxon in the richness metrics) .")
+            , h6("Additional Fields")
+            , p("There is one additional required field (BugGear) for Iowa bug samples.
+                Optional fields (e.g., SiteID, collection date) can be selected as well.
+                IMPORTANT! Do not include Life Stage or other fields that might
+                cause a taxon to occur in more than one row for a given sample
+                (which could lead to double-counting of that taxon in the richness metrics).")
             , uiOutput("UI_taxatrans_user_col_groupby")
 
             , h4("D. Run Operation")
@@ -41,20 +44,28 @@ function() {
 
     )## sidebarPanel ~ END
        , mainPanel(
-            tabsetPanel(type = "tabs"
-                        , tabPanel(title = "TaxaTrans_About"
-                                   ,includeHTML(file.path("www"
-                                                          , "rmd_html"
-                                          , "ShinyHTML_FB_TaxaTrans_1About.html"))
-                                   )
-                            , tabPanel(title = "TaxaTrans_Output"
-                                       ,includeHTML(file.path("www"
-                                                              , "rmd_html"
-                                          , "ShinyHTML_FB_TaxaTrans_2Output.html"))
-                            )
-            )## tabsetPanel ~ END
+            tabPanel(title = "TaxaTrans_About"
+                     ,includeHTML(file.path("www", "rmd_html"
+                                            , "ShinyHTML_FB_TaxaTrans_1About.html"))
+                     )## tabPanel ~ END
     )## mainPanel ~ END
   )##sidebarLayout ~ END
 
 
 }##FUNCTION ~ END
+
+
+# , mainPanel(
+#   tabsetPanel(type = "tabs"
+#               , tabPanel(title = "TaxaTrans_About"
+#                          ,includeHTML(file.path("www"
+#                                                 , "rmd_html"
+#                                                 , "ShinyHTML_FB_TaxaTrans_1About.html"))
+#               )
+#               , tabPanel(title = "TaxaTrans_Output"
+#                          ,includeHTML(file.path("www"
+#                                                 , "rmd_html"
+#                                                 , "ShinyHTML_FB_TaxaTrans_2Output.html"))
+#               )
+#   )## tabsetPanel ~ END
+# )## mainPanel ~ END
