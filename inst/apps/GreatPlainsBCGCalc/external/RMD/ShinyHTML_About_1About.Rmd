@@ -1,0 +1,50 @@
+---
+title: "About_1About"
+date: "2024-07-31"
+output: html_fragment
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                      , results = 'asis'
+                      , warning = FALSE
+                      , message = FALSE)
+```
+
+**About**
+
+This R-based tool calculates Biological Condition Gradient (BCG) and
+Index of Biological Integrity (IBI) scores for macroinvertebrate and
+fish assemblages in Minnesota streams.
+
+Users do not need R on their computers to run the app, nor do they need
+to have any familiarity with R.
+
+Requirements:
+
+-   Internet access\*
+
+-   Intermediate-level computer skills (need to be able to browse,
+    upload and download files, unzip files)
+
+For those who prefer to work with R, the functions are carried out by
+the
+<a href="https://github.com/leppott/BCGcalc" target="_blank">BCGcalc</a>
+and
+<a href="https://github.com/leppott/BioMonTools" target="_blank">BioMonTools</a>
+R packages, which are available on GitHub and were developed by Erik W.
+Leppo from Tetra Tech ([Erik.Leppo\@tetratech.com](#0)).
+
+\*If using the R code instead of the Shiny app, you won’t need internet
+access if you have R installed on your computer and have downloaded all
+the necessary packages.
+
+IMPORTANT: Data must be collected using MPCA field and laboratory
+protocols (see MPCA 2017 reports on the References page).
+
+---
+
+*Last updated 2024-07-12*

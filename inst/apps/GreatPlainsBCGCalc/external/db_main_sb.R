@@ -14,11 +14,16 @@ function(id) {
       , menuItem(text = "About"
                , tabName = "tab_about"
                , icon = icon("house")
-               )## menuItem ~ About ~ END
+                )## menuItem ~ About ~ END
+      , menuItem(text = "Instructions"
+                 , tabName = "tab_instruct"
+                 , icon = icon("person-chalkboard")
+                 )## menuItem ~ Instructions ~ END
       , menuItem(text = "Import Files"
                  , tabName = "tab_import"
                  , icon = icon("file-arrow-up")
-                 , startExpanded = TRUE)
+                 , startExpanded = TRUE
+                 )## menuItem ~ Import ~ END
       , menuItem(text = "Prepare Data"
                  , icon = icon("toolbox")
                  , menuSubItem("Introduction"
@@ -48,9 +53,14 @@ function(id) {
       , menuItem(text = "Map"
                  , tabName = "tab_map"
                  , icon = icon("map"))## menuItem ~ Map
-      , menuItem(text = "Relevant Resources"
+      , menuItem(text = "References"
                  , tabName = "tab_resources"
-                 , icon = icon("book"))
+                 , icon = icon("book")
+                 )## menuItem ~ References ~ END
+      , menuItem(text = "Troubleshooting"
+                 , tabName = "tab_troubleshoot"
+                 , icon = icon("question")
+                 )## menuItem ~ Troubleshooting ~ END
     )## sidebarMenu ~ END
   )## dashboardSidebar ~ END
 }## FUNCTION ~ END

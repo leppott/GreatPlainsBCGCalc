@@ -1,0 +1,21 @@
+---
+title: "Instructions"
+date: "2024-07-24"
+output: html_fragment
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                      , results = 'asis'
+                      , warning = FALSE
+                      , message = FALSE)
+```
+
+# Instructions
+
+------------------------------------------------------------------------
+
+*Last updated 2024-07-29*

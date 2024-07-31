@@ -1,0 +1,21 @@
+---
+title: "About_4Funding"
+date: "20224-07-02"
+output: html_fragment
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                      , results = 'asis'
+                      , warning = FALSE
+                      , message = FALSE)
+```
+
+Development of this Shiny app was funded by the Red Lake Department of Natural Resources and the United States Environmental Protection Agency (EPA) Office of Office of Science and Technology (OST) (lead EPA OST scientist: Susan Jackson).
+
+
+
+*Last updated 2024-07-02*

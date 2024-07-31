@@ -1,0 +1,24 @@
+---
+title: "About_2StudyArea"
+date: "2024-07-02"
+output: html_fragment
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                      , results = 'asis'
+                      , warning = FALSE
+                      , message = FALSE)
+```
+
+This R-based tool calculates Biological Condition Gradient (BCG) and Index of Biological Integrity (IBI) scores for macroinvertebrate and fish assemblages in Minnesota streams.
+
+![MN rivers map.](images/minnesota-rivers-map.gif)
+
+
+
+
+*Last updated 2024-07-02*

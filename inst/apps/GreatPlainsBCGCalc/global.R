@@ -41,6 +41,8 @@ db_main_body                   <- source("external/db_main_body.R"
                                         , local = TRUE)$value
 tab_code_about                 <- source("external/tab_about.R"
                                          , local = TRUE)$value
+tab_code_instruct              <- source("external/tab_instructions.R"
+                                         , local = TRUE)$value
 tab_code_import                <- source("external/tab_import.R"
                                          , local = TRUE)$value
 tab_code_filebuilder           <- source("external/tab_filebuilder.R"
@@ -59,6 +61,8 @@ tab_code_map                   <- source("external/tab_map.R"
                                          , local = TRUE)$value
 tab_code_resources             <- source("external/tab_resources.R"
                                          , local = TRUE)$value
+tab_code_troubleshoot             <- source("external/tab_troubleshoot.R"
+                                            , local = TRUE)$value
 
 # Console Message ----
 message(paste0("Interactive: ", interactive()))

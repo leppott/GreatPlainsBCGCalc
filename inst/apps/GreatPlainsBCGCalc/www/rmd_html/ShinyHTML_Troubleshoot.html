@@ -1,0 +1,45 @@
+
+
+
+<div id="troubleshooting" class="section level1">
+<h1>Troubleshooting</h1>
+<p>If you encounter problems and/or have suggestions on ways to further
+improve this Shiny app, please contact Erik W. Leppo from Tetra Tech via
+email (<a href="mailto:Erik.Leppo@tetratech.com">Erik.Leppo@tetratech.com</a>) or
+via a post on the
+<a href="https://github.com/leppott/BCGcalc/discussions" target="_blank">BCGcalc
+GitHub Discussions</a> page.</p>
+<p>Most common problems</p>
+<ul>
+<li><p>Forgetting to include all the required fields in the input
+file.</p></li>
+<li><p>Forgetting to import file # 2 after using the File Builder
+function.</p></li>
+<li><p>If running multiple calculators during the same session,
+forgetting to reset the calculation type in the drop-down menu. For
+example, if you run the bug IBI followed by the fish IBI, the bug IBI
+selection does not automatically clear if you don’t refresh the webpage,
+so don’t forget to select the fish IBI.</p></li>
+<li><p>When unzipping files, sometimes users have problems with the
+Microsoft default zip extractor (not sure why). If you can use 7zip
+instead, that seems to work better (free download: <a href="https://www.7-zip.org/" class="uri">https://www.7-zip.org/</a>).</p></li>
+<li><p>Including blank rows in File Builder input files. This will
+trigger non-matches with the taxa translator table. You can’t see the
+blank rows when you open the file in Excel, but you can see them if you
+open the file in Notepad. The extra rows happen for a variety of
+reasons. Commonly, the user is working in Excel, removes data from the
+bottom row(s), hits delete and then saves the file as a CSV. While the
+cell contents in the bottom row(s) are gone, they are still considered
+part of your data range and when you save the file as a CSV, the extra
+rows are retained. R imports any CSV “as is” and assumes any blank rows
+are there on purpose. To correct this, open the file in Excel, delete
+the rows in question (vs. deleting contents) and resave as a
+CSV.</p></li>
+<li><p>Saving files as ‘CSV UTF-8’ instead of ‘CSV.’ Input files must be
+CSV.</p></li>
+<li><p>Including non-ASCII characters in your input file (for example,
+Mesenchytraeusá). R will reject these.</p></li>
+</ul>
+<hr />
+<p><em>Last updated 2024-07-03</em></p>
+</div>

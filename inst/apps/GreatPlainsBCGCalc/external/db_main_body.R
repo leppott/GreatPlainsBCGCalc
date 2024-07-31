@@ -10,6 +10,8 @@ function(id) {
     tabItems(
       tabItem(tabName = "tab_about"
               , tab_code_about())
+      , tabItem(tabName = "tab_instruct"
+                , tab_code_instruct())
       , tabItem(tabName = "tab_import"
                 , tab_code_import())
       , tabItem(tabName = "tab_filebuilder"
