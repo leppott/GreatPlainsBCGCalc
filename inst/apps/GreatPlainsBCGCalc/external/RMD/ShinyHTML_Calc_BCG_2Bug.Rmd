@@ -1,0 +1,56 @@
+---
+title: "Calculation, BCG, Bug"
+date: "2023-02-03"
+output: html_fragment
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                      , results = 'asis'
+                      , warning = FALSE
+                      , message = FALSE)
+```
+
+# Calculation - Bug BCG
+
+CLASSES: MN Bug BCG models were calibrated for nine classes.
+
+```{r table_req}
+# Packages
+# library(readxl)
+# library(knitr)
+# library(kableExtra)
+# #library(DT)
+# 
+# # Data
+# fn <- "BCGcalc_ReqFields_20230203.xlsx"
+# path <- file.path("files", fn)
+# df <- read_excel(path, sheet = "MN_BugBCG_Classes")
+# 
+# # Table (DT)
+# # cap_req <- "Table 1. Required fields."
+# # DT::datatable(df_req
+# #               , filter = "top"
+# #               , caption = cap_req
+# #               , options = list(scrollX = TRUE
+# #                                , autoWidth = TRUE)
+# #               )
+# # DT::datatable(iris) # not working correctly in fragment
+# df %>%
+#   kable() %>%
+#   kable_styling(full_width = F, position = "left")
+```
+
+RULES: view the metrics and thresholds for each class
+[<a href="https://github.com/leppott/MNcalc/raw/main/inst/apps/MNcalc/www/links/BCG_BugRules_Gerritsen2012.pdf" target="blank">PDF</a>]
+(source: Gerritsen et al. 2012).
+
+RESULTS: see the Metadata files on the Instructions page for guidance on
+how to interpret the results.
+
+---
+
+*Last updated 2024-07-29*

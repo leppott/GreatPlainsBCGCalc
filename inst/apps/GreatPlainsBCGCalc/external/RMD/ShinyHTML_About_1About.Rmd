@@ -14,11 +14,11 @@ knitr::opts_chunk$set(echo = FALSE
                       , message = FALSE)
 ```
 
-**About**
+# About
 
-This R-based tool calculates Biological Condition Gradient (BCG) and
-Index of Biological Integrity (IBI) scores for macroinvertebrate and
-fish assemblages in Minnesota streams.
+This R-based tool calculates Biological Condition Gradient (BCG) scores
+for macroinvertebrate and fish assemblages in Great Plains streams in
+Iowa, Missouri, Nebraska, Kansas and Oklahoma.
 
 Users do not need R on their computers to run the app, nor do they need
 to have any familiarity with R.
@@ -42,9 +42,15 @@ Leppo from Tetra Tech ([Erik.Leppo\@tetratech.com](#0)).
 access if you have R installed on your computer and have downloaded all
 the necessary packages.
 
-IMPORTANT: Data must be collected using MPCA field and laboratory
-protocols (see MPCA 2017 reports on the References page).
+IMPORTANT: The BCG models were calibrated with data collected using
+specific field and laboratory protocols. When applying the models, make
+sure you are applying them to the correct type of data. For example, the
+Kansas macroinvertebrate model should only be applied to data collected
+and processed with Kansas Department of Health and Environment (KDHE)
+methods and the Missouri model should only be applied to data collected
+and processed with Missouri Department of Natural Resources (MO DNR)
+methods.
 
----
+------------------------------------------------------------------------
 
-*Last updated 2024-07-12*
+*Last updated 2024-07-31*

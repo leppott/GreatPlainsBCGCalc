@@ -30,5 +30,7 @@ function(id) {
                 , tab_code_map())
       , tabItem(tabName = "tab_resources"
                 , tab_code_resources())
+      , tabItem(tabName = "tab_troubleshoot"
+                , tab_code_troubleshoot())
     )## tabItems
 }## FUNCTION ~ END

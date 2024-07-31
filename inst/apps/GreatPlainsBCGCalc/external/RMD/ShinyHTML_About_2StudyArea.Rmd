@@ -1,6 +1,6 @@
 ---
 title: "About_2StudyArea"
-date: "2024-07-02"
+date: "2024-07-31"
 output: html_fragment
 editor_options: 
   markdown: 
@@ -14,11 +14,14 @@ knitr::opts_chunk$set(echo = FALSE
                       , message = FALSE)
 ```
 
-This R-based tool calculates Biological Condition Gradient (BCG) and Index of Biological Integrity (IBI) scores for macroinvertebrate and fish assemblages in Minnesota streams.
+# Study area
 
-![MN rivers map.](images/minnesota-rivers-map.gif)
+This R-based tool calculates Biological Condition Gradient (BCG) model
+outputs for macroinvertebrate and fish assemblages in Great Plains
+streams.
 
+![](images/About_Fig1_StudyArea.jpg){width="50%"}
 
+------------------------------------------------------------------------
 
-
-*Last updated 2024-07-02*
+Last updated 2024-07-31

@@ -1,6 +1,6 @@
 ---
-title: "References"
-date: "2024-07-03"
+title: "Troubleshooting"
+date: "2024-07-31"
 output: html_fragment
 editor_options: 
   markdown: 
@@ -30,11 +30,11 @@ Most common problems
 -   Forgetting to import file \# 2 after using the File Builder
     function.
 
--   If running multiple calculators during the same session, forgetting
-    to reset the calculation type in the drop-down menu. For example, if
-    you run the bug IBI followed by the fish IBI, the bug IBI selection
-    does not automatically clear if you don’t refresh the webpage, so
-    don’t forget to select the fish IBI.
+-   If running bug and fish calculations during the same session,
+    forgetting to reset the assemblage in the drop-down menu. For
+    example, if you run the bug BCG followed by the fish BCG, the bug
+    selection does not automatically clear unless you refresh the
+    webpage.
 
 -   When unzipping files, sometimes users have problems with the
     Microsoft default zip extractor (not sure why). If you can use 7zip
@@ -62,4 +62,4 @@ Most common problems
 
 ------------------------------------------------------------------------
 
-*Last updated 2024-07-03*
+*Last updated 2024-07-31*

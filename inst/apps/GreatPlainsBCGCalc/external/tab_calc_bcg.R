@@ -16,10 +16,6 @@ function() {
                      , label = "Community"
                      , choices = c("", sel_community))
 
-       # , p("Required Fields, IA Bugs only")
-       # , h6("If the default value is present (BugGear) it will be auto-populated.")
-       # , uiOutput("UI_calc_bcg_user_col_buggear")
-
        , h4("C. Mark Redundant (Non-Distinct) Taxa")
        , includeHTML(file.path("www", "rmd_html", "ShinyHTML_RedundantTaxa.html"))
        , checkboxInput("ExclTaxa"
@@ -28,6 +24,7 @@ function() {
 
        , h4("D. Define BCG Model")
        , p("Determined by Community chosen in Step B.")
+
        , h4("E. Run Calculations")
        , p("This button will calculate metrics values, metric memberships
            , level membership, and level assignment.")
@@ -41,13 +38,24 @@ function() {
                                           , "Download Results"))
         )## sidebarPanel ~ END
     , mainPanel(
-        tabsetPanel(type = "tabs"
-                    , tabPanel(title = "Calc_BCG_Output"
-                               ,includeHTML(file.path("www"
-                                                      , "rmd_html"
-                                          , "ShinyHTML_Calc_BCG_3Output.html"))
-                               )
-                    )## tabsetPanel ~ END
+      tabsetPanel(type = "tabs"
+                  , tabPanel(title = "Introduction"
+                             , includeHTML(file.path("www"
+                                                     , "rmd_html"
+                                                     , "ShinyHTML_Calc_BCG_1Intro.html"))
+                  )
+                  , tabPanel(title = "Bug BCG"
+                             , includeHTML(file.path("www"
+                                                     , "rmd_html"
+                                                     , "ShinyHTML_Calc_BCG_2Bug.html"))
+                             , value = "tab_BCG_Bugs")
+                  , tabPanel(title = "Fish BCG"
+                             , includeHTML(file.path("www"
+                                                     , "rmd_html"
+                                                     , "ShinyHTML_Calc_BCG_3Fish.html"))
+                             , value = "tab_BCG_Fish"
+                  )
+      )## tabsetPanel ~ END
 
     )## mainPanel ~ END
   )##sidebarLayout ~ END
