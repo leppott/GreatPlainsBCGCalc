@@ -1753,16 +1753,16 @@ shinyServer(function(input, output) {
       file.copy(file_from, file_to)
 
       ## Metric Names
-      fn_save <- "MetricNames.xlsx"
-      file_from <- temp_metricnames
-      file_to <- file.path(path_results_ref, fn_save)
-      file.copy(file_from, file_to)
+      # fn_save <- "MetricNames.xlsx"
+      # file_from <- temp_metricnames
+      # file_to <- file.path(path_results_ref, fn_save)
+      # file.copy(file_from, file_to)
 
       ## BCG Rules
-      fn_save <- "Rules.xlsx"
-      file_from <- temp_bcg_models
-      file_to <- file.path(path_results_ref, fn_save)
-      file.copy(file_from, file_to)
+      # fn_save <- "Rules.xlsx"
+      # file_from <- temp_bcg_models
+      # file_to <- file.path(path_results_ref, fn_save)
+      # file.copy(file_from, file_to)
 
       ## Calc, 11, Clean Up----
       prog_detail <- "Calculate, Clean Up"
