@@ -1,11 +1,22 @@
 GreatPlainsBCGCalc-NEWS
 ================
 <Ben.Block@tetratech.com>
-2024-07-05 10:08:23.216628
+2024-08-01 10:14:39.37811
 
 <!-- NEWS.md is generated from NEWS.Rmd. Please edit that file -->
 
-    #> Last Update: 2024-07-05 10:08:23.253573
+    #> Last Update: 2024-08-01 10:14:39.393699
+
+# GreatPlainsBCGCalc 0.0.3.9014 (2024-08-01)
+
+- Includes updates from v0.0.3.9006 - v0.0.3.9013
+- Updated UI structure to add extra subtabs
+- Added supporting files to new links subfolder in www
+- Updates to About, Calc, Instructions, and Troubleshooting UI
+- Removed copies of MetricNames.xlsx, MetricFlags.xlsx, and Rules.xlsx
+  in the output reference folder
+- Updated UI of within-app file builder tab
+- Added Index_Class as a drop-down option in File Builder
 
 # GreatPlainsBCGCalc 0.0.3.9005 (2024-07-05)
 
