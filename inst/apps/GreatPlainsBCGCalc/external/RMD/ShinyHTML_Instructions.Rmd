@@ -14,8 +14,244 @@ knitr::opts_chunk$set(echo = FALSE
                       , message = FALSE)
 ```
 
-# Instructions
+# Instructions, test files, and metadata
+
+The BCG models are calibrated for specific collection and processing
+protocols. Make sure you are using the BCG model that is appropriate for
+your samples.
+
+-   Bug methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Bug_Methods_20240730.pdf" target="blank">PDF</a>]
+
+-   Fish methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Fish_Methods_20240730.pdf" target="blank">PDF</a>]
+
+<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/IndexNameClass_20240730.zip" target="blank">Index
+Name and Index Class</a> are required for all calculations (they tell R
+which BCG rules and IBI metrics to apply). See tables at bottom of page.
+
+### Quick Tutorial [PDF]
+
+### Example Input Files
+
+-    Within app: *File Builder* - Bugs
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Bugs_20240730.zip" target="blank">ZIP</a>]
+
+-    Within app: *File Builder* - Fish
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Fish_20240730.zip" target="blank">ZIP</a>]
+
+-   Outside app (already formatted) - Bugs
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_Formatted_Bugs_20240730.zip" target="blank">ZIP</a>]
+
+-   Outside app (already formatted) - Fish
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_Formatted_Fish_20240731.zip" target="blank">ZIP</a>]
+
+### Metadata
+
+-   Input File requirements
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/InputFileReqs_GP_20240730.zip" target="blank">ZIP</a>]
+
+-   Taxa Translator and Attribute tables
+
+-   Index Names and Classes
+
+-   *File Builder* output files
+
+-   BCG output files
+
+### Workflow
+
+![](images/Workflow_20240626.jpg){width="50%"}
+
+### [Prepare Data]{.underline}
+
+**Create input file**. The input file can include data for multiple
+samples, sites and Index Classes.
+
+Decide on a pathway:
+
+-   Within app: *File Builder*
+
+-   Outside app: Already formatted
+
+**Import file.**
+
+If using the **Outside app: Already Formatted option, skip to the
+Calculation step** below.
+
+If using the *File Builder* option, **select the desired Calculation and
+run the *File Builder*** (see instructions on the *File Builder* page).
+The *File Builder* will join the taxa names in the input file with the
+‘original taxaID’ column in the
+<a href="https://github.com/leppott/BioMonTools_SupportFiles/tree/main/data/taxa_official/GP" target="blank">Taxa
+Translator table</a> and performs two functions:
+
+-   Translate the original taxon name to the proper Operational
+    Taxonomic Unit (OTU) for the calculation.
+
+-   Add in new columns with taxa attributes and hierarchy (e.g., Order,
+    Family) that are needed for the metric calculations.
+
+**Download and unzip the results**. A ‘results’ folder will appear, with
+the following subfolders:
+
+```{r table_req}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+#library(DT)
+
+# Data
+fn <- "Instructions.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "Subfolders")
+
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+In the subfolders for each calculation, there will be four *File
+Builder* output files, described below.
+
+```{r table_req2}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+#library(DT)
+
+# Data
+fn <- "Instructions.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "FB_Output")
+
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+When the *File Builder* has finished running, **a prompt box will
+appear**. It will notify you if your *File Builder* run was successful
+or failed. Or, in some cases (e.g., if there are problems with your
+input file), the screen will gray out (meaning the Shiny app has
+crashed) and you’ll have to refresh the app, investigate potential
+problems with your input file, and try again.
+
+If your run was successful, the prompt box will alert you if there are
+taxa in your input file that don’t match with the taxa list in the Taxa
+Translator table.
+
+**What if there are non-matching taxa?** Open the
+‘XXX_TaxaTranslator_nonmatch’ file and view the list of non-matching
+taxa. If the non-matches are due to a misspelling, extra space or other
+small issue, fix the non-matching taxa in your input file, re-upload the
+file via the ‘Import File’ tab, and rerun the *File Builder* (and to
+prevent confusion, delete the first set of output files with the
+non-matching taxa). If the non-matching taxa are legitimate taxa that
+need to be added to the Taxa Translator table, notify
+[Jen.Stamp\@tetratech.com](mailto:Jen.Stamp@tetratech.com) and Tetra
+Tech will update the Taxa Translator table as soon as resources permit.
+
+Next, **import the newly created ‘XXX_TaxaTranslator_TAXAATTR’ file**.
+
+#### [Calculation]{.underline}
+
+**Go to the Calculation tab and run the selected calculation**.
+
+Note: the default setting is for the R code to
+<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/RedundantTaxa_20240719.pdf" target="blank">mark
+redundant/non-distinct taxa</a>. If you want to use an alternate scheme,
+uncheck the box, include your designations (TRUE/FALSE) in the input
+file and name the column ‘EXCLUDE.’
+
+The R code will perform the following steps:
+
+BCG
+
+1.  Mark non-distinct taxa (excluded from richness metrics)
+
+2.  Calculate metric values for each sample
+
+3.  Calculate BCG metric membership values for each sample
+
+4.  Assign each sample membership in a BCG level
+
+**Download and unzip the results**. The files will be added to the
+appropriate subfolder (depending on the Calculation). Note: you will
+receive a prompt saying that the destination folder already contains the
+‘XXX_TaxaTranslator_TAXAATTR’ file and asking if you’d like to replace
+the existing file. Click ‘Yes to All.’
+
+**Open the subfolder and view the outputs**.
+
+List of BCG outputs.
+
+```{r table_req3}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+#library(DT)
+
+# Data
+fn <- "Instructions.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "BCG_Output")
+
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+Want more information on the BCG? See the References tab.
+
+Having problems? See the Troubleshooting tab.
+
+**Time saver tip:**
+
+Some internet browsers, like Google Chrome and Mozilla Firefox, allow
+you to change settings so that you can select which folder to download
+files to (versus files going to the default Download folder).
+
+-   Google Chrome file saving tip
+    [<a href="https://tetratech-wtr-wne.shinyapps.io/ContDataQC_EPAtemplate/_w_18ec5e9f/GoogleChrome_TimesaverTips.pdf" target="blank">PDF</a>]
+
+-   Mozilla Firefox: go to Settings \> General \> Files and Applications
+    \> Check box for “always ask where to save files.”
+
+#### [Merge Files]{.underline}
+
+If you want to combine the BCG and IBI results into one file and have a
+common identifier field in the two files (e.g., SampleID), use the
+‘Merge files’ function under the Prepare Data tab.
+
+#### [Map]{.underline}
+
+When you run the BCG Calculator, the \_BCG_RESULTS (CSV) output will
+include the results plus the SampleID, Index_Name and Index_Class
+columns. None of the other fields will be carried through. To use the
+Map function, you’ll need to add latitude and longitude into the input
+file. This join can be done outside the app or within (using the Merge
+Files function).
+
+1.  Import the file
+
+2.  Go to the Map tab
+
+3.  Use the drop-down menus to match required column names with the
+    fields in your input file
+
+4.  Click the ‘update map’ button
+
+5.  Interact with the map as desired (zoom in/out, click on dots to view
+    sample information, change the base layer if desired by clicking on
+    the box in the upper right)
+
+Want to try it yourself? Download a test file
+[<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFile_Map_20240730.zip" target="blank">ZIP</a>].
 
 ------------------------------------------------------------------------
 
-*Last updated 2024-07-29*
+Last updated 2024-08-01
