@@ -23,6 +23,7 @@ function() {
             , uiOutput("UI_taxatrans_user_col_taxaid")
             # N_Taxa (really for group_by)
             , uiOutput("UI_taxatrans_user_col_n_taxa")
+            , uiOutput("UI_taxatrans_user_col_indexclass")
 
             , h6("Additional Fields")
             , p("There is one additional required field (BugGear) for Iowa bug samples.
