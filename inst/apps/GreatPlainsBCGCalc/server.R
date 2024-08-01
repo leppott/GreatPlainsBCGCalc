@@ -1780,10 +1780,10 @@ shinyServer(function(input, output) {
       path_results_ref <- file.path(path_results, dn_files_ref)
 
       ## Metric Flags
-      fn_save <- "MetricFlags.xlsx"
-      file_from <- temp_bcg_checks
-      file_to <- file.path(path_results_ref, fn_save)
-      file.copy(file_from, file_to)
+      # fn_save <- "MetricFlags.xlsx"
+      # file_from <- temp_bcg_checks
+      # file_to <- file.path(path_results_ref, fn_save)
+      # file.copy(file_from, file_to)
 
       ## Metric Names
       # fn_save <- "MetricNames.xlsx"
