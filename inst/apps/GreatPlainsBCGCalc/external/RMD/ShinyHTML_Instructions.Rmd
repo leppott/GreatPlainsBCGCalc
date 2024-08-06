@@ -30,7 +30,7 @@ your samples.
 Name and Index Class</a> are required for all calculations (they tell R
 which BCG rules and IBI metrics to apply). See tables at bottom of page.
 
-### Quick Tutorial [PDF]
+### Quick Tutorial [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/QuickTutorial_GP_20240806.pdf" target="blank">PDF</a>]
 
 ### Example Input Files
 
