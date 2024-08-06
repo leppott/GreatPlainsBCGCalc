@@ -21,6 +21,10 @@ knitr::opts_chunk$set(
 cat(paste0("Last Update: ",Sys.time()))
 ```
 
+# GreatPlainsBCGCalc 0.0.3.9016 (2024-08-06)
+
+* Updated UI information for various tabs
+
 # GreatPlainsBCGCalc 0.0.3.9014 (2024-08-01)
 
 * Includes updates from v0.0.3.9006 - v0.0.3.9013

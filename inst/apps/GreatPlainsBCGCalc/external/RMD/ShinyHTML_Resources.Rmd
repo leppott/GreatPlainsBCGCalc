@@ -14,12 +14,28 @@ knitr::opts_chunk$set(echo = FALSE
                       , message = FALSE)
 ```
 
-# Resources
+# References
 
--   <a href="https://www.epa.gov/sites/default/files/2016-02/documents/bcg-practioners-guide-report.pdf" target="_blank">USEPA
-    2016</a>: A Practitioner's Guide to the Biological Condition
-    Gradient: A Framework to Describe Incremental Change in Aquatic
-    Ecosystems. EPA-842-R-16-001. U.S. Environmental Protection Agency,
-    Washington, DC.
+Below are links to relevant resources. Download individual reports in
+the table below.
 
--   **In Progress**: Great Plains BCG Development Report
+```{r table_req}
+# Packages
+library(readxl)
+library(knitr)
+library(kableExtra)
+#library(DT)
+
+# Data
+fn <- "References.xlsx"
+path <- file.path("files", fn)
+df <- read_excel(path, sheet = "References")
+
+df %>%
+  kable(escape = FALSE, format = "html") %>%
+  kable_styling(full_width = F, position = "left")
+```
+
+---
+
+Last updated 2024-08-06

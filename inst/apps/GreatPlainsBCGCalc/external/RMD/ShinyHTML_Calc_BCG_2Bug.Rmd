@@ -16,41 +16,29 @@ knitr::opts_chunk$set(echo = FALSE
 
 # Calculation - Bug BCG
 
-CLASSES: MN Bug BCG models were calibrated for nine classes.
+**BCG Level Narratives (Draft)**: modified for the Great Plains
+[<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/BCG_LevelNarratives_20240514.docx" target="blank">MS
+Word</a>].
 
-```{r table_req}
-# Packages
-# library(readxl)
-# library(knitr)
-# library(kableExtra)
-# #library(DT)
-# 
-# # Data
-# fn <- "BCGcalc_ReqFields_20230203.xlsx"
-# path <- file.path("files", fn)
-# df <- read_excel(path, sheet = "MN_BugBCG_Classes")
-# 
-# # Table (DT)
-# # cap_req <- "Table 1. Required fields."
-# # DT::datatable(df_req
-# #               , filter = "top"
-# #               , caption = cap_req
-# #               , options = list(scrollX = TRUE
-# #                                , autoWidth = TRUE)
-# #               )
-# # DT::datatable(iris) # not working correctly in fragment
-# df %>%
-#   kable() %>%
-#   kable_styling(full_width = F, position = "left")
-```
+**Rules (Draft)**: view the metrics and thresholds for each class
+[<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/BugRules_20240514.pdf" target="blank">PDF</a>].
 
-RULES: view the metrics and thresholds for each class
-[<a href="https://github.com/leppott/MNcalc/raw/main/inst/apps/MNcalc/www/links/BCG_BugRules_Gerritsen2012.pdf" target="blank">PDF</a>]
-(source: Gerritsen et al. 2012).
+There are common threads across states despite the methods differences:
 
-RESULTS: see the Metadata files on the Instructions page for guidance on
-how to interpret the results.
+-   Same BCG level narratives
 
----
+-   Same set of metrics (with a few exceptions) with thresholds adjusted
+    to account for differences in methods and classes
 
-*Last updated 2024-07-29*
+-   Same taxa attributes/traits (BCG attribute, FFG, habit, voltinism)
+    used for metric calculations in all the states
+
+**Results**: for guidance on how to interpret the results, download the
+**Metadata - BCG output** files on the Instructions page.
+
+For more detailed information on development of the Great Plains BCG,
+see the report [in progress] on the References page.
+
+------------------------------------------------------------------------
+
+*Last updated 2024-08-06*

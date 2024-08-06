@@ -34,10 +34,10 @@ which BCG rules and IBI metrics to apply). See tables at bottom of page.
 
 ### Example Input Files
 
--    Within app: *File Builder* - Bugs
+-   Within app: *File Builder* - Bugs
     [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Bugs_20240730.zip" target="blank">ZIP</a>]
 
--    Within app: *File Builder* - Fish
+-   Within app: *File Builder* - Fish
     [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Fish_20240730.zip" target="blank">ZIP</a>]
 
 -   Outside app (already formatted) - Bugs
@@ -52,12 +52,16 @@ which BCG rules and IBI metrics to apply). See tables at bottom of page.
     [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/InputFileReqs_GP_20240730.zip" target="blank">ZIP</a>]
 
 -   Taxa Translator and Attribute tables
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/Metadata_TaxaTransAttrTables_20240729.zip" target="blank">ZIP</a>]
 
 -   Index Names and Classes
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/IndexNameClass_20240730.zip" target="blank">ZIP</a>]
 
 -   *File Builder* output files
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/Metadata_FileBuilder_20240801.zip" target="blank">ZIP</a>]
 
 -   BCG output files
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/Metadata_Calculations_BCG_20240726.zip" target="blank">ZIP</a>]
 
 ### Workflow
 
@@ -254,4 +258,4 @@ Want to try it yourself? Download a test file
 
 ------------------------------------------------------------------------
 
-Last updated 2024-08-01
+Last updated 2024-08-06

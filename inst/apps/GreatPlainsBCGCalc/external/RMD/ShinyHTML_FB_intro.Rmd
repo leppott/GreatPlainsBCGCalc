@@ -16,17 +16,53 @@ knitr::opts_chunk$set(echo = FALSE
 
 # **Preparing input files**
 
-Input files must be comma-separated values (CSV). There are two options
-for preparing input files:
+The BCG models are calibrated for specific collection and processing
+protocols. Make sure you are using the BCG model that is appropriate for
+your samples.
 
-**Option 1**: Use the File Builder 'Operational Taxonomic Unit (OTU)
-Attribute Assignment' function to ensure that you are using the proper
-taxa attributes for the BCG calculation. See the **Within the App: File
-Builder** subtab for details.
+-   Bug methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Bug_Methods_20240730.pdf" target="blank">PDF</a>]
+
+-   Fish methods
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_Fish_Methods_20240730.pdf" target="blank">PDF</a>]
+
+<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/IndexNameClass_20240730.zip" target="blank">Index
+Name and Index Class</a> are required for all calculations (they tell R
+which BCG rules and IBI metrics to apply). See tables at bottom of page.
+
+Input files must be comma-separated values (CSV). The input file can
+include data for multiple samples, sites and Index Classes.
+
+There are two options for preparing input files:
+
+**Option 1**: Use the **Within the App: *File Builder*** function. Why?
+
+-   Fewer required fields
+
+-   Ensures use of proper Operational Taxonomic Units (OTUs) and
+    attributes for the calculations
+
+-   More flexibility on names of column headings
 
 **Option 2**: Generate a file outside of the Shiny app that is ready to
 go (i.e., has all the required fields, with exact column heading names).
-See the **Outside the app** subtab for details.
+See the **Outside the App** subtab for details.
+
+### Example Input Files
+
+-   Within app: *File Builder* - Bugs
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Bugs_20240730.zip" target="blank">ZIP</a>]
+
+-   Within app: *File Builder* - Fish
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Fish_20240730.zip" target="blank">ZIP</a>]
+
+-   Outside app (already formatted) - Bugs
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_Formatted_Bugs_20240730.zip" target="blank">ZIP</a>]
+
+-   Outside app (already formatted) - Fish
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_Formatted_Fish_20240731.zip" target="blank">ZIP</a>]
 
 After you prepare the input file, go to the **Import Files** tab, upload
-your input file, and calculate the BCG in the **Calculation** tab.
+your input file, and calculate the BCG in the **Calculation** tab.
+
+![](images/Workflow_20240626.jpg){width="50%"}

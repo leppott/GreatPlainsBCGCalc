@@ -16,10 +16,9 @@ knitr::opts_chunk$set(echo = FALSE
 
 # Funding
 
-Development of this Shiny app was funded by the Red Lake Department of
-Natural Resources and the United States Environmental Protection Agency
-(EPA) Office of Office of Science and Technology (OST) (lead EPA OST
-scientist: Susan Jackson).
+Development of this Shiny app was funded by the United States
+Environmental Protection Agency (EPA) Office of Office of Science and
+Technology (OST) (lead EPA OST scientist: Susan Jackson).
 
 ------------------------------------------------------------------------
 

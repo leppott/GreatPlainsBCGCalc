@@ -16,34 +16,36 @@ knitr::opts_chunk$set(echo = FALSE
 
 # Introduction
 
-The MN Biological Condition Gradient (BCG) is divided into six levels of
-biological condition along a generalized stressor-response curve,
-ranging from observable biological conditions found at no or low levels
-of stressors (level 1) to those found at high levels of stressors (level
-6) (Figure 1)
+The Great Plains Biological Condition Gradient (BCG) is divided into six
+levels of biological condition along a generalized stressor-response
+curve, ranging from observable biological conditions found at no or low
+levels of stressors (level 1) to those found at high levels of stressors
+(level 6) (Figure 1)
 (<a href="https://www.epa.gov/sites/default/files/2016-02/documents/bcg-practioners-guide-report.pdf" target="blank">USEPA
 2016</a>).
 
-Lists of Index Classes and links to Rules tables can be found on the bug
-and fish BCG subtabs. For more detailed information, see Gerritsen et
-al. (2017) and Gerritsen et al. (2012) on the References page.
+Information on BCG input metrics and rules can be found on the bug and
+fish BCG subtabs. For more detailed information, see the Great Plains
+BCG report [in progress] on the References page.
 
-For guidance on how to interpret the results, see the Metadata files on
-the Instructions page.
+<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/RedundantTaxa_20240719.pdf" target="blank">**Redundant
+Taxa**</a>: There is a column called EXCLUDE that will be added to your
+input file automatically when you run the BCG Calculator. The EXCLUDE
+field marks redundant (non-distinct) taxa. Redundant taxa are excluded
+from richness metric calculations but are included in the composition
+(percent individuals) metrics. There is a ‘Generate Redundant Taxa
+Column’ box which is checked as the default setting since this is how
+metric calculations were handled during BCG model calibration. The box
+can be unchecked if you want to substitute your own designations.
 
-IMPORTANT: Data must be collected using MPCA field and laboratory
-protocols (see MPCA 2017 reports on the References page).
+For guidance on how to interpret the results, download the **Metadata -
+BCG output** files on the Instructions page.
 
 ![](images/About_Fig2_BCG.jpg){width="75%"}
 
 Figure 1. Conceptual diagram of the Biological Condition Gradient (BCG)
 model.
 
-Some rules tables in the reports on the References page. You may notice
-some differences between the MPCA reports and metadata files. For
-example, some of the coldwater metrics in the fish BCG are coded
-differently. Use the Metadata.
-
 ------------------------------------------------------------------------
 
-*Last updated 2024-07-29*
+*Last updated 2024-08-06*

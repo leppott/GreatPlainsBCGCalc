@@ -16,41 +16,24 @@ knitr::opts_chunk$set(echo = FALSE
 
 # Calculation - Fish BCG
 
-CLASSES: MN Fish BCG models were calibrated for eleven classes.
+**BCG Level Narratives (Draft)**: modified for the Great Plains
+[<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/BCG_LevelNarratives_20240514.docx" target="blank">MS
+Word</a>]
 
-```{r table_req}
-# # Packages
-# library(readxl)
-# library(knitr)
-# library(kableExtra)
-# #library(DT)
-# 
-# # Data
-# fn <- "BCGcalc_ReqFields_20230203.xlsx"
-# path <- file.path("files", fn)
-# df <- read_excel(path, sheet = "MN_FishBCG_Classes")
-# 
-# # Table (DT)
-# # cap_req <- "Table 1. Required fields."
-# # DT::datatable(df_req
-# #               , filter = "top"
-# #               , caption = cap_req
-# #               , options = list(scrollX = TRUE
-# #                                , autoWidth = TRUE)
-# #               )
-# # DT::datatable(iris) # not working correctly in fragment
-# df %>%
-#   kable() %>%
-#   kable_styling(full_width = F, position = "left")
-```
+-   BCG Level 1/Historical perspective on the Great Plains fish
+    assemblage
+    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/FishDiscussion_Level1_20240503.docx" target="blank">MS
+    Word</a>]
 
-RULES: view the metrics and thresholds for each class
-[<a href="https://github.com/leppott/MNcalc/raw/main/inst/apps/MNcalc/www/links/BCG_FishRules_Gerritsen2012.pdf" target="blank">PDF</a>]
-(source: Gerritsen et al. 2012).
+**Rules (Draft)**: view the metrics and thresholds for each class
+[<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/GP_FishRules_Cascade_20240731.pdf" target="blank">PDF</a>]
 
-RESULTS: see the Metadata files on the Instructions page for guidance on
-how to interpret the results.
+**Results**: for guidance on how to interpret the results, download the
+**Metadata - BCG output** files on the Instructions page.
+
+For more detailed information on development of the Great Plains BCG,
+see the report [in progress] on the References page.
 
 ------------------------------------------------------------------------
 
-*Last updated 2024-07-29*
+Last updated 2024-08-06

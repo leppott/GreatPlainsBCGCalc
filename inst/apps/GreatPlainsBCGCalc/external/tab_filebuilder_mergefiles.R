@@ -22,7 +22,7 @@ function() {
                                , "text/tab-separated-values"
                                , "text/plain"
                                , ".csv")
-                  )
+      )
       , fileInput("fn_input_mf2"
                   , label = "Import Secondary File"
                   , multiple = FALSE
@@ -31,7 +31,7 @@ function() {
                                , "text/tab-separated-values"
                                , "text/plain"
                                , ".csv")
-                  )
+      )
 
       , h4("B. Select common identifier column for the merge.")
       , uiOutput("UI_mergefiles_f1_col_merge")
@@ -50,27 +50,9 @@ function() {
       #, p(textOutput("fn_input_display"))
     )## sidebarPanel
     , mainPanel(
-      tabsetPanel(type = "tabs"
-                  , id = "MF_mp_tsp"
-                  , tabPanel(title = "About"
-                             , includeHTML(file.path("www"
-                                                     , "rmd_html"
-                                                     , "ShinyHTML_FB_MergeFiles_1About.html")))
-                  , tabPanel(title = "Output"
-                             , includeHTML(file.path("www"
-                                                     , "rmd_html"
-                                                     , "ShinyHTML_FB_MergeFiles_2Output.html")))
-                  , tabPanel(title = "File 1"
-                             , h4("File 1 (Primary)")
-                             , DT::dataTableOutput("df_import_mf1_DT")
-                             , value = "tab_MF_1")
-                  , tabPanel(title = "File 2"
-                             , h4("File 2 (Secondary)")
-                             , DT::dataTableOutput("df_import_mf2_DT")
-                             , value = "tab_MF_2"
-                             )
-      )## tabsetPanel ~ END
-
+      includeHTML(file.path("www"
+                            , "rmd_html"
+                            , "ShinyHTML_FB_MergeFiles_1About.html"))
     )## mainPanel ~ END
   )##sidebarLayout ~ END
 }##FUNCTION ~ END
