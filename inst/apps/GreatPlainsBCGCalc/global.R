@@ -120,7 +120,8 @@ df_checks <- as.data.frame(readxl::read_excel(temp_bcg_checks, sheet = "Flags"))
 
 # BMT, Taxa Official Pick----
 url_taxa_official_pick <- file.path(url_bmt_base
-                                    , "taxa_official/GP"
+                                    , "taxa_official"
+                                    , "GP"
                                     , "GreatPlains_BCG_Pick_Files.csv")
 temp_taxa_official_pick <- tempfile(fileext = ".csv")
 httr::GET(url_taxa_official_pick, httr::write_disk(temp_taxa_official_pick))

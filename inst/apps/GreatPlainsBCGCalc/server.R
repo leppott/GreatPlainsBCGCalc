@@ -440,6 +440,7 @@ shinyServer(function(input, output) {
       ## Data,  Official Taxa----
       url_taxoff <- file.path(url_bmt_base
                               , "taxa_official"
+                              , "GP"
                               , fn_taxoff)
       temp_taxoff <- tempfile(fileext = ".csv")
       httr::GET(url_taxoff, write_disk(temp_taxoff))
@@ -450,6 +451,7 @@ shinyServer(function(input, output) {
       if (!is.null(fn_taxoff_meta)) {
         url_taxoff_meta <- file.path(url_bmt_base
                                      , "taxa_official"
+                                     , "GP"
                                      , fn_taxoff_meta)
         temp_taxoff_meta <- tempfile(fileext = ".csv")
         httr::GET(url_taxoff_meta, write_disk(temp_taxoff_meta))
@@ -461,6 +463,7 @@ shinyServer(function(input, output) {
       if (!is.null(fn_taxoff_attr)) {
         url_taxoff_attr <- file.path(url_bmt_base
                                      , "taxa_official"
+                                     , "GP"
                                      , fn_taxoff_attr)
         temp_taxoff_attr <- tempfile(fileext = ".csv")
         httr::GET(url_taxoff_attr, write_disk(temp_taxoff_attr))
@@ -472,6 +475,7 @@ shinyServer(function(input, output) {
       if (!is.null(fn_taxoff_meta)) {
         url_taxoff_attr_meta <- file.path(url_bmt_base
                                      , "taxa_official"
+                                     , "GP"
                                      , fn_taxoff_attr_meta)
         temp_taxoff_attr_meta <- tempfile(fileext = ".csv")
         httr::GET(url_taxoff_attr_meta, write_disk(temp_taxoff_attr_meta))
