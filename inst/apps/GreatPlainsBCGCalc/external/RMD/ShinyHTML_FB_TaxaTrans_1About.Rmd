@@ -32,7 +32,7 @@ EXAMPLE INPUT FILES
     [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Bugs_20240730.zip" target="blank">ZIP</a>]
 
 -   Fish
-    [<a href="https://github.com/Blocktt/GreatPlainsBCGCalc/raw/main/inst/apps/GreatPlainsBCGCalc/www/links/TestFiles_FileBuilder_Fish_20240730.zip" target="blank">ZIP</a>]
+    [[ZIP](links/TestFiles_FileBuilder_Fish_20240809.zip)]
 
 The File Builder joins the taxon name in the input file with the
 ‘original taxaID’ column in the
@@ -132,4 +132,4 @@ df %>%
 
 ------------------------------------------------------------------------
 
-Last updated: 2024-07-31
+Last updated: 2024-08-09

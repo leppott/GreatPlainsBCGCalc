@@ -21,6 +21,10 @@ knitr::opts_chunk$set(
 cat(paste0("Last Update: ",Sys.time()))
 ```
 
+# GreatPlainsBCGCalc 0.0.3.9018 (2024-08-09)
+
+* reformat: Update links and example files
+
 # GreatPlainsBCGCalc 0.0.3.9017 (2024-08-06)
 
 * Updated UI for Instructions tab
